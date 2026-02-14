@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NorthPeak Coaching — Online Fitness & Lifestyle Coaching</title>
+    <meta
+      name="description"
+      content="Online coaching built around real life: training, nutrition, and accountability with a sustainable plan."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Top bar -->
+    <header class="topbar" id="top">
+      <div class="container topbar__inner">
+        <a class="brand" href="#top" aria-label="NorthPeak Coaching home">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">NorthPeak Coaching</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+            <span class="sr-only">Open menu</span>
+            <span class="nav__bars" aria-hidden="true"></span>
+          </button>
+
+          <div class="nav__menu" id="navMenu">
+            <a href="#results">Results</a>
+            <a href="#method">How it works</a>
+            <a href="#coach">Coach</a>
+            <a href="#packages">Packages</a>
+            <a href="#contact" class="btn btn--sm">Book a free consult</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">ONLINE COACHING</p>
+            <h1>Build strength, drop stress, and keep it sustainable.</h1>
+            <p class="lead">
+              Training + nutrition + accountability designed around your schedule. No extreme
+              rules—just a plan you can run for months (and years).
+            </p>
+
+            <div class="hero__cta">
+              <a class="btn" href="#contact">Start with a free consult</a>
+              <a class="btn btn--ghost" href="#method">See how it works</a>
+            </div>
+
+            <div class="trust">
+              <div class="trust__item">
+                <div class="trust__kpi">12+</div>
+                <div class="trust__label">years coaching</div>
+              </div>
+              <div class="trust__item">
+                <div class="trust__kpi">300+</div>
+                <div class="trust__label">clients supported</div>
+              </div>
+              <div class="trust__item">
+                <div class="trust__kpi">4–5</div>
+                <div class="trust__label">check-ins / month</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__media">
+            <!-- Replace later with real photo -->
+            <img
+              class="hero__image"
+              src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='900'%3E%3Cdefs%3E%3CradialGradient%20id='g'%20cx='30%25'%20cy='30%25'%20r='90%25'%3E%3Cstop%20offset='0%25'%20stop-color='%2397C4FF'/%3E%3Cstop%20offset='50%25'%20stop-color='%232A6DF4'/%3E%3Cstop%20offset='100%25'%20stop-color='%230B1020'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='100%25'%20height='100%25'%20fill='url(%23g)'/%3E%3Ccircle%20cx='860'%20cy='310'%20r='190'%20fill='%23FFFFFF'%20opacity='0.10'/%3E%3Ccircle%20cx='920'%20cy='400'%20r='120'%20fill='%23FFFFFF'%20opacity='0.10'/%3E%3Cpath%20d='M70%20740%20C250%20630%20420%20690%20600%20620%20C770%20555%20960%20590%201130%20480%20L1130%20900%20L70%20900%20Z'%20fill='%23FFFFFF'%20opacity='0.08'/%3E%3Ctext%20x='70'%20y='120'%20fill='%23FFFFFF'%20opacity='0.92'%20font-family='Inter,Arial'%20font-size='52'%20font-weight='700'%3ECOACHING%20THAT%20FITS%20REAL%20LIFE%3C/text%3E%3Ctext%20x='70'%20y='175'%20fill='%23FFFFFF'%20opacity='0.78'%20font-family='Inter,Arial'%20font-size='24'%3EReplace%20this%20placeholder%20with%20a%20coach%20photo%3C/text%3E%3C/svg%3E"
+              alt="Abstract placeholder graphic (replace with coach photo)"
+              loading="eager"
+            />
+            <div class="hero__card">
+              <h3>What you get</h3>
+              <ul class="checklist">
+                <li>Personalized training plan</li>
+                <li>Nutrition targets + meals framework</li>
+                <li>Weekly check-ins + adjustments</li>
+                <li>In-app chat + form review</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section class="section" id="results">
+        <div class="container">
+          <div class="section__head">
+            <h2>Client snapshots</h2>
+            <p class="muted">A few “before / after” style placeholders. Click to open.</p>
+          </div>
+
+          <div class="grid gallery" id="gallery">
+            <!-- SVG placeholders: swap for real client photos later -->
+            <button class="tile" data-full="assets/result-1.svg" aria-label="Open result 1">
+              <img src="assets/result-1.svg" alt="Result placeholder 1" loading="lazy" />
+            </button>
+            <button class="tile" data-full="assets/result-2.svg" aria-label="Open result 2">
+              <img src="assets/result-2.svg" alt="Result placeholder 2" loading="lazy" />
+            </button>
+            <button class="tile" data-full="assets/result-3.svg" aria-label="Open result 3">
+              <img src="assets/result-3.svg" alt="Result placeholder 3" loading="lazy" />
+            </button>
+            <button class="tile" data-full="assets/result-4.svg" aria-label="Open result 4">
+              <img src="assets/result-4.svg" alt="Result placeholder 4" loading="lazy" />
+            </button>
+            <button class="tile" data-full="assets/result-5.svg" aria-label="Open result 5">
+              <img src="assets/result-5.svg" alt="Result placeholder 5" loading="lazy" />
+            </button>
+            <button class="tile" data-full="assets/result-6.svg" aria-label="Open result 6">
+              <img src="assets/result-6.svg" alt="Result placeholder 6" loading="lazy" />
+            </button>
+          </div>
+
+          <div class="quote">
+            <p class="quote__text" id="quoteText">
+              “Finally a plan I can stick to without my whole day revolving around it.”
+            </p>
+            <p class="quote__meta" id="quoteMeta">— Client, 12-week block</p>
+            <div class="quote__controls">
+              <button class="btn btn--ghost btn--sm" id="quotePrev" type="button">Prev</button>
+              <button class="btn btn--ghost btn--sm" id="quoteNext" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- METHOD / APP -->
+      <section class="section section--alt" id="method">
+        <div class="container">
+          <div class="section__head">
+            <h2>Everything in one simple system</h2>
+            <p class="muted">
+              The goal: remove guesswork. You train, you eat normally, you check in, we adjust based
+              on real data.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🏋️</div>
+              <h3>Training plan</h3>
+              <p>
+                A program built for your experience level, equipment, and weekly schedule— with
+                progression you can actually recover from.
+              </p>
+              <ul class="mini">
+                <li>2–5 sessions / week</li>
+                <li>Technique cues + demo links</li>
+                <li>Progression auto-adjustments</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🥗</div>
+              <h3>Nutrition framework</h3>
+              <p>
+                Macros or hand portions—your choice. We prioritize consistency, protein, and meals
+                you enjoy.
+              </p>
+              <ul class="mini">
+                <li>Targets that fit real life</li>
+                <li>Flexible meal templates</li>
+                <li>Travel + weekends included</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">💬</div>
+              <h3>Check-ins & support</h3>
+              <p>
+                Weekly check-ins for feedback, course correction, and accountability. Message any
+                time—get answers fast.
+              </p>
+              <ul class="mini">
+                <li>Weekly review + tweaks</li>
+                <li>Form checks (video)</li>
+                <li>Habit + mindset coaching</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="banner">
+            <div>
+              <h3>Not sure where to start?</h3>
+              <p class="muted">
+                Take the 2-minute intake and I’ll recommend the best starting plan.
+              </p>
+            </div>
+            <a class="btn" href="#contact">Take the intake</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- COACH -->
+      <section class="section" id="coach">
+        <div class="container split">
+          <div class="split__media">
+            <img
+              class="portrait"
+              src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='900'%20height='1100'%3E%3Cdefs%3E%3ClinearGradient%20id='p'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%2311182E'/%3E%3Cstop%20offset='1'%20stop-color='%232A6DF4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='100%25'%20height='100%25'%20rx='44'%20fill='url(%23p)'/%3E%3Ccircle%20cx='250'%20cy='280'%20r='170'%20fill='%23FFFFFF'%20opacity='0.10'/%3E%3Ccircle%20cx='670'%20cy='480'%20r='230'%20fill='%23FFFFFF'%20opacity='0.08'/%3E%3Ctext%20x='70'%20y='980'%20fill='%23FFFFFF'%20opacity='0.92'%20font-family='Inter,Arial'%20font-size='38'%20font-weight='700'%3EReplace%20with%20coach%20portrait%3C/text%3E%3Ctext%20x='70'%20y='1030'%20fill='%23FFFFFF'%20opacity='0.78'%20font-family='Inter,Arial'%20font-size='22'%3EProfessional%20photo%20recommended%3C/text%3E%3C/svg%3E"
+              alt="Coach portrait placeholder (replace with real photo)"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="split__copy">
+            <p class="eyebrow">MEET YOUR COACH</p>
+            <h2>Hi — I’m Alex. I coach people who want results without extremes.</h2>
+            <p class="muted">
+              My approach blends strength training fundamentals, flexible nutrition, and behavior
+              change—so you don’t fall off the plan the moment life gets busy.
+            </p>
+
+            <div class="bullets">
+              <div class="bullet">
+                <h3>Practical programming</h3>
+                <p>Simple structure, clear progression, minimal fluff.</p>
+              </div>
+              <div class="bullet">
+                <h3>Food you actually like</h3>
+                <p>No “perfect meals” required—just repeatable basics.</p>
+              </div>
+              <div class="bullet">
+                <h3>Accountability that works</h3>
+                <p>Weekly check-ins, real feedback, and fast adjustments.</p>
+              </div>
+            </div>
+
+            <a class="btn" href="#packages">View packages</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PACKAGES -->
+      <section class="section section--alt" id="packages">
+        <div class="container">
+          <div class="section__head">
+            <h2>Coaching packages</h2>
+            <p class="muted">Choose a runway that matches your goal timeline.</p>
+          </div>
+
+          <div class="pricing">
+            <article class="price">
+              <div class="price__top">
+                <h3>Starter</h3>
+                <p class="muted">Best for momentum + habit reset</p>
+              </div>
+              <div class="price__tag">
+                <span class="price__num">8</span><span class="price__unit">weeks</span>
+              </div>
+              <ul class="checklist">
+                <li>Training + nutrition setup</li>
+                <li>Weekly check-ins</li>
+                <li>Chat support (business hours)</li>
+              </ul>
+              <a class="btn btn--ghost" href="#contact">Ask about Starter</a>
+            </article>
+
+            <article class="price price--featured">
+              <div class="badge">Most popular</div>
+              <div class="price__top">
+                <h3>Transform</h3>
+                <p class="muted">Best for body recomposition</p>
+              </div>
+              <div class="price__tag">
+                <span class="price__num">16</span><span class="price__unit">weeks</span>
+              </div>
+              <ul class="checklist">
+                <li>Everything in Starter</li>
+                <li>Form reviews (video)</li>
+                <li>Monthly goal recalibration</li>
+              </ul>
+              <a class="btn" href="#contact">Apply for Transform</a>
+            </article>
+
+            <article class="price">
+              <div class="price__top">
+                <h3>Year-Round</h3>
+                <p class="muted">Best for long-term performance</p>
+              </div>
+              <div class="price__tag">
+                <span class="price__num">12</span><span class="price__unit">months</span>
+              </div>
+              <ul class="checklist">
+                <li>Periodized training blocks</li>
+                <li>Nutrition phases (cut/maintain)</li>
+                <li>Priority support</li>
+              </ul>
+              <a class="btn btn--ghost" href="#contact">Ask about Year-Round</a>
+            </article>
+          </div>
+
+          <details class="faq">
+            <summary>FAQ: Do I need a full gym?</summary>
+            <p>
+              No. The plan is written around your equipment (home, gym, or hybrid). If you have
+              dumbbells and a bench, that’s enough to progress.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>FAQ: Do you do meal plans?</summary>
+            <p>
+              We use targets + templates (and optional examples). The focus is sustainability,
+              flexibility, and learning what works for you.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>FAQ: How fast will I see results?</summary>
+            <p>
+              Most clients notice energy, consistency, and strength improvements in 2–3 weeks.
+              Visible changes typically follow over 6–12+ weeks depending on goal and adherence.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- CONTACT CTA -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="cta">
+            <div class="cta__copy">
+              <h2>Ready to invest in yourself?</h2>
+              <p class="muted">
+                Fill out the form and I’ll reply with next steps (and the best package based on your
+                goals).
+              </p>
+              <ul class="mini">
+                <li>Expect a reply within 1–2 business days</li>
+                <li>No pressure—just clarity</li>
+                <li>You’ll get a simple intake link</li>
+              </ul>
+            </div>
+
+            <form class="form" id="leadForm" novalidate>
+              <div class="form__row">
+                <label>
+                  Name
+                  <input name="name" type="text" autocomplete="name" required minlength="2" />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" autocomplete="email" required />
+                </label>
+              </div>
+
+              <label>
+                What’s your main goal?
+                <select name="goal" required>
+                  <option value="" selected disabled>Select one…</option>
+                  <option>Fat loss</option>
+                  <option>Muscle gain</option>
+                  <option>Strength / performance</option>
+                  <option>Habits / consistency</option>
+                </select>
+              </label>
+
+              <label>
+                Message
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your schedule, training background, and what’s been hard to stick with."
+                  required
+                  minlength="10"
+                ></textarea>
+              </label>
+
+              <div class="form__actions">
+                <button class="btn" type="submit">Send</button>
+                <p class="form__note muted" id="formNote" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL (gallery) -->
+      <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Image preview">
+        <div class="modal__backdrop" data-close="true"></div>
+        <div class="modal__panel" role="document">
+          <button class="modal__close" id="modalClose" aria-label="Close preview">×</button>
+          <img id="modalImg" alt="Preview" />
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="brand brand--footer">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span class="brand__text">NorthPeak Coaching</span>
+          </div>
+          <p class="muted">
+            Coaching that fits real life. Train smart. Eat normally. Stay consistent.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <a href="#top">Top</a>
+          <a href="#results">Results</a>
+          <a href="#packages">Packages</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <p class="muted">© <span id="year"></span> NorthPeak Coaching. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

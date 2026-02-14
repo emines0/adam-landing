@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
+  <defs>
+    <radialGradient id="g" cx="25%" cy="25%" r="95%">
+      <stop offset="0%" stop-color="#97c4ff"/><stop offset="55%" stop-color="#1a3f9e"/><stop offset="100%" stop-color="#0b1020"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+  <rect x="90" y="120" width="1020" height="660" rx="34" fill="rgba(255,255,255,.09)"/>
+  <text x="140" y="210" fill="#fff" font-family="Inter, Arial" font-size="34" font-weight="700">RESULT</text>
+  <text x="140" y="260" fill="rgba(255,255,255,.75)" font-family="Inter, Arial" font-size="20">Swap with real client photo</text>
+</svg>
