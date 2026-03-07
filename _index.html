@@ -20,7 +20,6 @@
   </head>
 
   <body>
-
     <!-- Top bar -->
     <header class="topbar" id="top">
       <div class="container topbar__inner">
@@ -46,261 +45,66 @@
       </div>
     </header>
 
-
     <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">ONLINE COACHING</p>
+            <h1>Build strength, drop stress, and keep it sustainable.</h1>
+            <p class="lead">
+              Training + nutrition + accountability designed around your schedule. No extreme rules
+              - just a plan you can run for months (and years).
+            </p>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <!-- ═══ QUIZ PANEL ═══ -->
-      <div class="quiz-panel" id="quizPanel">
-        <div class="quiz-logo">
-          <div class="quiz-logo__top">ADAM KAVKA</div>
-          <div class="quiz-logo__bottom">COACHING</div>
-          <p class="quiz-tagline">Answer the following questions.</p>
-        </div>
+            <div class="hero__cta">
+              <a class="btn" href="#contact">Start with a free consult</a>
+              <a class="btn btn--ghost" href="#method">See how it works</a>
+            </div>
 
-        <div class="quiz-progress">
-          <div class="quiz-progress__fill" id="quizProgress" style="width: 16.66%"></div>
-        </div>
-
-        <div class="quiz-steps" id="quizSteps">
-          <!-- Step 1 -->
-          <div class="quiz-step is-active" data-step="1">
-            <p class="quiz-question">How can I help you reach your goal?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="goal" data-val="fat">Athlete improvement</button>
-              <button class="quiz-opt" data-group="goal" data-val="muscle">Build muscles</button>
-              <button class="quiz-opt" data-group="goal" data-val="energy">
-                Get more energy and structure
-              </button>
-              <button class="quiz-opt" data-group="goal" data-val="combo">Fat reduction</button>
-              <button class="quiz-opt" data-group="goal" data-val="combo">
-                Recover from injury / Prevent injury
-              </button>
-              <button class="quiz-opt" data-group="goal" data-val="combo">Build glutes</button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="2" disabled>Next →</button>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="quiz-step" data-step="2">
-            <p class="quiz-question">How many times per week do you realistically want to train?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="freq" data-val="2">2 times</button>
-              <button class="quiz-opt" data-group="freq" data-val="3">3 times</button>
-              <button class="quiz-opt" data-group="freq" data-val="4+">4+ times</button>
-              <button class="quiz-opt" data-group="freq" data-val="unsure">Not sure</button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="1">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="3" disabled>Next →</button>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="quiz-step" data-step="3">
-            <p class="quiz-question">What is your biggest challenge?</p>
-            <div class="quiz-options quiz-options--3col">
-              <button class="quiz-opt" data-group="challenge" data-val="diet">
-                It's hard to stick to a diet
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="structure">
-                Lack of structure in my training
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="motivation">
-                Struggle with motivation
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="time">
-                Not enough time in my daily life
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="tried">
-                Tried a lot without results
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="tried">
-                Need coaching
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next →</button>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="quiz-step" data-step="4">
-            <p class="quiz-question">How ready are you to start making real progress?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="ready" data-val="now">
-                I'm ready to start now
-              </button>
-              <button class="quiz-opt" data-group="ready" data-val="soon">
-                I want to start within the next few weeks
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="3">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="5" disabled>Next →</button>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="quiz-step" data-step="5">
-            <p class="quiz-question">What do you feel you're missing most right now?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="missing" data-val="diet-structure">
-                Nutrition structure
-              </button>
-              <button class="quiz-opt" data-group="missing" data-val="training-structure">
-                Training structure
-              </button>
-              <button class="quiz-opt" data-group="missing" data-val="accountability">
-                Accountability and check-ins
-              </button>
-              <button class="quiz-opt" data-group="missing" data-val="both">All</button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="4">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="6" disabled>Next →</button>
-            </div>
-          </div>
-
-          <!-- Step 6 -->
-          <div class="quiz-step" data-step="6">
-            <p class="quiz-question">Are you willing to follow a plan if it suits you?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="commit" data-val="yes">
-                Yes, I'm ready to do what it takes
-              </button>
-              <button class="quiz-opt" data-group="commit" data-val="support">
-                Yes, but I need support and guidance
-              </button>
-              <button class="quiz-opt" data-group="commit" data-val="unsure">
-                I'm a little unsure
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="5">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="contact" disabled>
-                Next →
-              </button>
-            </div>
-          </div>
-
-          <!-- Contact -->
-          <div class="quiz-step" data-step="contact">
-            <p class="quiz-contact-title">Contact Information</p>
-            <!-- Replace YOUR_FORM_TOKEN with your FormKeep token -->
-            <form
-              id="quizForm"
-              action="https://formkeep.com/f/YOUR_FORM_TOKEN"
-              method="POST"
-              accept-charset="UTF-8"
-            >
-              <input type="hidden" name="goal" id="fGoal" />
-              <input type="hidden" name="frequency" id="fFreq" />
-              <input type="hidden" name="challenge" id="fChallenge" />
-              <input type="hidden" name="readiness" id="fReady" />
-              <input type="hidden" name="missing" id="fMissing" />
-              <input type="hidden" name="commitment" id="fCommit" />
-
-              <div class="quiz-field">
-                <label for="qName">Full name</label>
-                <input
-                  type="text"
-                  id="qName"
-                  name="name"
-                  placeholder="Your full name"
-                  required
-                  autocomplete="name"
-                />
+            <div class="trust">
+              <div class="trust__item">
+                <div class="trust__kpi">12+</div>
+                <div class="trust__label">years coaching</div>
               </div>
-              <div class="quiz-field">
-                <label for="qEmail">Email</label>
-                <input
-                  type="email"
-                  id="qEmail"
-                  name="email"
-                  placeholder="Your email"
-                  required
-                  autocomplete="email"
-                />
+              <div class="trust__item">
+                <div class="trust__kpi">300+</div>
+                <div class="trust__label">clients supported</div>
               </div>
-              <div class="quiz-field">
-                <label for="qPhone">Phone</label>
-                <div class="quiz-phone-row">
-                  <div class="quiz-phone-flag"><span>🇳🇴</span> +47</div>
-                  <input
-                    type="tel"
-                    id="qPhone"
-                    name="phone"
-                    placeholder="Mobile number"
-                    autocomplete="tel"
-                  />
-                </div>
+              <div class="trust__item">
+                <div class="trust__kpi">4–5</div>
+                <div class="trust__label">check-ins / month</div>
               </div>
-
-              <div class="quiz-nav" style="justify-content: flex-start; margin-bottom: 12px">
-                <button type="button" class="quiz-nav-btn quiz-nav-btn--back" data-back="6">
-                  ← Back
-                </button>
-              </div>
-
-              <button type="submit" class="quiz-submit-btn" id="quizSubmit">Contact me →</button>
-              <p class="quiz-privacy">
-                When you submit the form, we use your contact information to send you special
-                offers. Read our <a href="/privacy">privacy policy</a> for more information.
-              </p>
-              <p class="quiz-status" id="quizStatus"></p>
-            </form>
+            </div>
           </div>
 
-          <!-- Thanks -->
-          <div class="quiz-step" data-step="thanks">
-            <div class="quiz-thanks">
-              <div class="quiz-thanks__icon">✓</div>
-              <h2>Thank you! We'll be in touch soon.</h2>
-              <p>
-                We've received your information and will send you a personalised offer within 24
-                hours.
-              </p>
+          <div class="hero__media">
+            <!-- Replace later with real photo -->
+            <img
+              class="hero__image"
+              src="assets/coach-hero.png"
+              alt="Abstract placeholder graphic (replace with coach photo)"
+              loading="eager"
+            />
+            <div class="hero__card">
+              <h3>What you get</h3>
+              <ul class="checklist">
+                <li>Personalized training plan</li>
+                <li>Nutrition targets + meals framework</li>
+                <li>Weekly check-ins + adjustments</li>
+                <li>In-app chat + form review</li>
+              </ul>
             </div>
           </div>
         </div>
-        <!-- /quiz-steps -->
-      </div>
-      <!-- /quiz-panel -->
-    </div>
-
-    <div class="hero__media">
-      <!-- Replace later with real photo -->
-      <img
-        class="hero__image"
-        src="assets/coach-hero.png"
-        alt="Abstract placeholder graphic (replace with coach photo)"
-        loading="eager"
-      />
-      <div class="hero__card">
-        <h3>What you get</h3>
-        <ul class="checklist">
-          <li>Personalized training plan</li>
-          <li>Nutrition targets + meals framework</li>
-          <li>Weekly check-ins + adjustments</li>
-          <li>In-app chat + form review</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <!-- RESULTS -->
       <section class="section" id="results">
         <div class="container">
           <div class="section__head">
             <h2>Client snapshots</h2>
+            <!-- <p class="muted">A few “before / after” style placeholders. Click to open.</p> -->
           </div>
 
           <div class="grid gallery" id="gallery">
@@ -327,7 +131,7 @@
 
           <div class="quote">
             <p class="quote__text" id="quoteText">
-              "Finally a plan I can stick to without my whole day revolving around it."
+              “Finally a plan I can stick to without my whole day revolving around it.”
             </p>
             <p class="quote__meta" id="quoteMeta">— Client, 12-week block</p>
             <div class="quote__controls">
@@ -397,7 +201,7 @@
             <div>
               <h3>Not sure where to start?</h3>
               <p class="muted">
-                Take the 2-minute intake and I'll recommend the best starting plan.
+                Take the 2-minute intake and I’ll recommend the best starting plan.
               </p>
             </div>
             <a class="btn" href="#contact">Take the intake</a>
@@ -414,10 +218,10 @@
 
           <div class="split__copy">
             <p class="eyebrow">MEET YOUR COACH</p>
-            <h2>Hi, I'm Adam. I coach people who want results without extremes.</h2>
+            <h2>Hi, I’m Adam. I coach people who want results without extremes.</h2>
             <p class="muted">
               My approach blends strength training fundamentals, flexible nutrition, and behavior
-              change - so you don't fall off the plan the moment life gets busy.
+              change - so you don’t fall off the plan the moment life gets busy.
             </p>
 
             <div class="bullets">
@@ -427,7 +231,7 @@
               </div>
               <div class="bullet">
                 <h3>Food you actually like</h3>
-                <p>No "perfect meals" required - just repeatable basics.</p>
+                <p>No “perfect meals” required - just repeatable basics.</p>
               </div>
               <div class="bullet">
                 <h3>Accountability that works</h3>
@@ -503,7 +307,7 @@
             <summary>FAQ: Do I need a full gym?</summary>
             <p>
               No. The plan is written around your equipment (home, gym, or hybrid). If you have
-              dumbbells and a bench, that's enough to progress.
+              dumbbells and a bench, that’s enough to progress.
             </p>
           </details>
           <details class="faq">
@@ -530,13 +334,13 @@
             <div class="cta__copy">
               <h2>Ready to invest in yourself?</h2>
               <p class="muted">
-                Fill out the form and I'll reply with next steps (and the best package based on your
+                Fill out the form and I’ll reply with next steps (and the best package based on your
                 goals).
               </p>
               <ul class="mini">
                 <li>Expect a reply within 1–2 business days</li>
                 <li>No pressure - just clarity</li>
-                <li>You'll get a simple intake link</li>
+                <li>You’ll get a simple intake link</li>
               </ul>
             </div>
 
@@ -553,7 +357,7 @@
               </div>
 
               <label>
-                What's your main goal?
+                What’s your main goal?
                 <select name="goal" required>
                   <option value="" selected disabled>Select one…</option>
                   <option>Fat loss</option>
@@ -568,7 +372,7 @@
                 <textarea
                   name="message"
                   rows="5"
-                  placeholder="Tell me about your schedule, training background, and what's been hard to stick with."
+                  placeholder="Tell me about your schedule, training background, and what’s been hard to stick with."
                   required
                   minlength="10"
                 ></textarea>
@@ -591,8 +395,6 @@
           <img id="modalImg" alt="Preview" />
         </div>
       </div>
-
-
     </main>
 
     <footer class="footer">
