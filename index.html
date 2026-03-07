@@ -287,11 +287,45 @@
                   required
                   autocomplete="email"
                 />
+                <p class="quiz-field-error" id="qEmailError">Please enter a valid email address.</p>
               </div>
               <div class="quiz-field">
                 <label for="qPhone">Phone</label>
                 <div class="quiz-phone-row">
-                  <div class="quiz-phone-flag"><span>🇳🇴</span> +47</div>
+                  <!-- Country dial code picker -->
+                  <div class="dial-picker" id="dialPicker">
+                    <button
+                      type="button"
+                      class="dial-trigger"
+                      id="dialTrigger"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                    >
+                      <span class="dial-flag" id="dialFlag">🇳🇴</span>
+                      <span class="dial-code" id="dialCode">+47</span>
+                      <span class="dial-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div
+                      class="dial-dropdown"
+                      id="dialDropdown"
+                      role="listbox"
+                      aria-label="Select country code"
+                      hidden
+                    >
+                      <div class="dial-search-wrap">
+                        <input
+                          type="text"
+                          class="dial-search"
+                          id="dialSearch"
+                          placeholder="Search country…"
+                          autocomplete="off"
+                          aria-label="Search countries"
+                        />
+                      </div>
+                      <ul class="dial-list" id="dialList"></ul>
+                    </div>
+                  </div>
+                  <input type="hidden" name="dial_code" id="qDialCode" value="+47" />
                   <input
                     type="tel"
                     id="qPhone"
@@ -302,13 +336,12 @@
                 </div>
               </div>
 
-              <div class="quiz-nav" style="justify-content: flex-start; margin-bottom: 12px">
+              <div class="quiz-bottom-row">
                 <button type="button" class="quiz-nav-btn quiz-nav-btn--back" data-back="6">
                   ← Back
                 </button>
+                <button type="submit" class="quiz-submit-btn" id="quizSubmit">Contact me →</button>
               </div>
-
-              <button type="submit" class="quiz-submit-btn" id="quizSubmit">Contact me →</button>
               <p class="quiz-privacy">
                 When you submit the form, we use your contact information to send you special
                 offers. Read our <a href="/privacy">privacy policy</a> for more information.
