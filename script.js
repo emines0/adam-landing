@@ -130,12 +130,29 @@ leadForm?.addEventListener("submit", e => {
   leadForm.reset();
 });
 
+// Scroll top
+
+document.querySelectorAll(".scroll-top-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    // Clean the URL back to just the origin (removes any path/hash)
+    window.history.replaceState(null, "", window.location.origin);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
 // Quiz Panel
 
 const answers = {};
 const TOTAL = 6;
 const progBar = document.getElementById("quizProgress");
 const allSteps = document.querySelectorAll(".quiz-step");
+
+function getStep3() {
+  if (answers.goal === "athlete") return "3b";
+  if (answers.goal === "injury") return "3c";
+  return "3";
+}
 
 function showStep(id) {
   allSteps.forEach(s => s.classList.remove("is-active"));
@@ -165,12 +182,23 @@ document.getElementById("quizSteps").addEventListener("click", function (e) {
   }
 
   if (nextBtn && !nextBtn.disabled) {
-    const target = nextBtn.dataset.next;
+    let target = nextBtn.dataset.next;
+
+    // Route to the correct Step 3 variant based on goal
+    if (target === "3") target = getStep3();
+
     if (target === "contact") populateHidden();
     showStep(target);
   }
 
-  if (backBtn) showStep(backBtn.dataset.back);
+  if (backBtn) {
+    let target = backBtn.dataset.back;
+
+    // When going back to Step 3, restore the correct variant
+    if (target === "3") target = getStep3();
+
+    showStep(target);
+  }
 });
 
 function populateHidden() {

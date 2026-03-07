@@ -21,30 +21,29 @@
 
   <body>
 
-    <!-- Top bar -->
-    <header class="topbar" id="top">
-      <div class="container topbar__inner">
-        <a class="brand" href="#top" aria-label="AK Coaching home">
-          <span class="brand__mark" aria-hidden="true"></span>
-          <span class="brand__text">AK Coaching</span>
-        </a>
+<!-- Top bar -->
+<header class="topbar" id="top">
+  <div class="container topbar__inner">
+    <a class="brand" href="#top" aria-label="AK Coaching home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">AK Coaching</span>
+    </a>
 
-        <nav class="nav" aria-label="Primary">
-          <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
-            <span class="sr-only">Open menu</span>
-            <span class="nav__bars" aria-hidden="true"></span>
-          </button>
+    <nav class="nav" aria-label="Primary">
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+        <span class="sr-only">Open menu</span>
+        <span class="nav__bars" aria-hidden="true"></span>
+      </button>
 
-          <div class="nav__menu" id="navMenu">
-            <a href="#results">Results</a>
-            <a href="#method">How it works</a>
-            <a href="#coach">Coach</a>
-            <a href="#packages">Packages</a>
-            <a href="#contact" class="btn btn--sm">Book a free consult</a>
-          </div>
-        </nav>
+      <div class="nav__menu" id="navMenu">
+        <a href="#results">Results</a>
+        <a href="#method">How it works</a>
+        <a href="#coach">Coach</a>
+        <a href="#packages">Packages</a>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
 
 
     <main>
@@ -58,7 +57,7 @@
         <div class="quiz-logo">
           <div class="quiz-logo__top">ADAM KAVKA</div>
           <div class="quiz-logo__bottom">COACHING</div>
-          <p class="quiz-tagline">Answer the following questions.</p>
+          <p class="quiz-tagline">Apply and answer the following questions.</p>
         </div>
 
         <div class="quiz-progress">
@@ -70,16 +69,18 @@
           <div class="quiz-step is-active" data-step="1">
             <p class="quiz-question">How can I help you reach your goal?</p>
             <div class="quiz-options">
-              <button class="quiz-opt" data-group="goal" data-val="fat">Athlete improvement</button>
+              <button class="quiz-opt" data-group="goal" data-val="athlete">
+                Athlete improvement
+              </button>
               <button class="quiz-opt" data-group="goal" data-val="muscle">Build muscles</button>
               <button class="quiz-opt" data-group="goal" data-val="energy">
                 Get more energy and structure
               </button>
-              <button class="quiz-opt" data-group="goal" data-val="combo">Fat reduction</button>
-              <button class="quiz-opt" data-group="goal" data-val="combo">
+              <button class="quiz-opt" data-group="goal" data-val="fat">Fat reduction</button>
+              <button class="quiz-opt" data-group="goal" data-val="injury">
                 Recover from injury / Prevent injury
               </button>
-              <button class="quiz-opt" data-group="goal" data-val="combo">Build glutes</button>
+              <button class="quiz-opt" data-group="goal" data-val="glutes">Build glutes</button>
             </div>
             <div class="quiz-nav">
               <button class="quiz-nav-btn quiz-nav-btn--next" data-next="2" disabled>Next →</button>
@@ -120,8 +121,66 @@
               <button class="quiz-opt" data-group="challenge" data-val="tried">
                 Tried a lot without results
               </button>
-              <button class="quiz-opt" data-group="challenge" data-val="tried">
+              <button class="quiz-opt" data-group="challenge" data-val="coaching">
                 Need coaching
+              </button>
+            </div>
+            <div class="quiz-nav">
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">← Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next →</button>
+            </div>
+          </div>
+
+          <!-- Step 3 – ATHLETE variant (shown only when goal = "fat" / Athlete improvement) -->
+          <div class="quiz-step" data-step="3b">
+            <p class="quiz-question">
+              What aspect of your performance do you most want to improve?
+            </p>
+            <div class="quiz-options quiz-options--3col">
+              <button class="quiz-opt" data-group="challenge" data-val="speed">
+                Speed & explosiveness
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="strength">
+                Strength & power
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="endurance">Recovery</button>
+              <button class="quiz-opt" data-group="challenge" data-val="injury">
+                Staying injury-free
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="body-comp">
+                Body composition
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="consistency">
+                Training consistency
+              </button>
+            </div>
+            <div class="quiz-nav">
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">← Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next →</button>
+            </div>
+          </div>
+
+          <!-- Step 3 – INJURY/RECOVERY variant -->
+          <div class="quiz-step" data-step="3c">
+            <p class="quiz-question">What best describes your current situation?</p>
+            <div class="quiz-options quiz-options--3col">
+              <button class="quiz-opt" data-group="challenge" data-val="rehab">
+                Recovering from a recent injury
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="chronic">
+                Managing a chronic / recurring issue
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="prevention">
+                No injury now, want to stay that way
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="post-surgery">
+                Post-surgery rehabilitation
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="pain">
+                Pain during training I want to fix
+              </button>
+              <button class="quiz-opt" data-group="challenge" data-val="return">
+                Returning to sport after time off
               </button>
             </div>
             <div class="quiz-nav">
@@ -160,7 +219,7 @@
               <button class="quiz-opt" data-group="missing" data-val="accountability">
                 Accountability and check-ins
               </button>
-              <button class="quiz-opt" data-group="missing" data-val="both">All</button>
+              <button class="quiz-opt" data-group="missing" data-val="all">All</button>
             </div>
             <div class="quiz-nav">
               <button class="quiz-nav-btn quiz-nav-btn--back" data-back="4">← Back</button>
@@ -296,6 +355,125 @@
   </div>
 </section>
 
+<!-- COACH -->
+<section class="section" id="coach">
+  <div class="container split">
+    <div class="split__media">
+      <img class="portrait" src="assets/coach.png" loading="lazy" />
+    </div>
+
+    <div class="split__copy">
+      <p class="eyebrow">MEET YOUR COACH</p>
+      <h2>Hi, I'm Adam. I coach people who want results without extremes.</h2>
+      <p class="muted">
+        My approach blends strength training fundamentals, flexible nutrition, and behavior change -
+        so you don't fall off the plan the moment life gets busy.
+      </p>
+
+      <div class="bullets">
+        <div class="bullet">
+          <h3>Practical programming</h3>
+          <p>Simple structure, clear progression, minimal fluff.</p>
+        </div>
+        <div class="bullet">
+          <h3>Food you actually like</h3>
+          <p>No "perfect meals" required - just repeatable basics.</p>
+        </div>
+        <div class="bullet">
+          <h3>Accountability that works</h3>
+          <p>Weekly check - ins, real feedback, and fast adjustments.</p>
+        </div>
+      </div>
+
+      <a class="btn scroll-top-btn" href="#packages">Apply</a>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section section--alt" id="packages">
+  <div class="container">
+    <div class="section__head">
+      <h2>Coaching packages</h2>
+      <p class="muted">Choose a runway that matches your goal timeline.</p>
+    </div>
+
+    <div class="pricing">
+      <article class="price">
+        <div class="price__top">
+          <h3>Starter</h3>
+          <p class="muted">Best for momentum + habit reset</p>
+        </div>
+        <div class="price__tag">
+          <span class="price__num">3</span><span class="price__unit">months</span>
+        </div>
+        <ul class="checklist">
+          <li>Training + nutrition setup</li>
+          <li>Periodized training blocks</li>
+          <li>Weekly check-ins</li>
+          <li>Form reviews (video)</li>
+          <li>Chat support</li>
+        </ul>
+        <a class="btn scroll-top-btn btn--ghost" href="#contact">Apply for Starter</a>
+      </article>
+
+      <article class="price price--featured">
+        <div class="badge">Most popular</div>
+        <div class="price__top">
+          <h3>Pro</h3>
+          <p class="muted">Best for body recomposition</p>
+        </div>
+        <div class="price__tag">
+          <span class="price__num">6</span><span class="price__unit">months</span>
+        </div>
+        <ul class="checklist">
+          <li>Everything in Starter</li>
+          <li>Nutrition phases (cut/maintain)</li>
+          <li>Priority support</li>
+        </ul>
+        <a class="btn scroll-top-btn" href="#contact">Apply for Pro</a>
+      </article>
+
+      <article class="price">
+        <div class="price__top">
+          <h3>Pro plus</h3>
+          <p class="muted">Best for long-term performance</p>
+        </div>
+        <div class="price__tag">
+          <span class="price__num">12</span><span class="price__unit">months</span>
+        </div>
+        <ul class="checklist">
+          <li>Everything in Pro</li>
+          <li>Personalized program adjustments</li>
+        </ul>
+        <a class="btn scroll-top-btn btn--ghost" href="#contact">Apply for Pro plus</a>
+      </article>
+    </div>
+
+    <details class="faq">
+      <summary>FAQ: Do I need a full gym?</summary>
+      <p>
+        No. The plan is written around your equipment (home, gym, or hybrid). If you have dumbbells
+        and a bench, that's enough to progress.
+      </p>
+    </details>
+    <details class="faq">
+      <summary>FAQ: Do you do meal plans?</summary>
+      <p>
+        We use targets + templates (and optional examples). The focus is sustainability,
+        flexibility, and learning what works for you.
+      </p>
+    </details>
+    <details class="faq">
+      <summary>FAQ: How fast will I see results?</summary>
+      <p>
+        Most clients notice energy, consistency, and strength improvements in 2–3 weeks. Visible
+        changes typically follow over 6–12+ weeks depending on goal and adherence.
+      </p>
+    </details>
+  </div>
+</section>
+
       <!-- RESULTS -->
       <section class="section" id="results">
         <div class="container">
@@ -338,190 +516,70 @@
         </div>
       </section>
 
-      <!-- METHOD / APP -->
-      <section class="section section--alt" id="method">
-        <div class="container">
-          <div class="section__head">
-            <h2>Everything in one simple system</h2>
-            <p class="muted">
-              The goal: remove guesswork. You train, you eat normally, you check in, we adjust based
-              on real data.
-            </p>
-          </div>
+<!-- METHOD / APP -->
+<section class="section section--alt" id="method">
+  <div class="container">
+    <div class="section__head">
+      <h2>Everything in one simple system</h2>
+      <p class="muted">
+        The goal: remove guesswork. You train, you eat normally, you check in, we adjust based on
+        real data.
+      </p>
+    </div>
 
-          <div class="cards">
-            <article class="card">
-              <div class="card__icon" aria-hidden="true">🏋️</div>
-              <h3>Training plan</h3>
-              <p>
-                A program built for your experience level, equipment, and weekly schedule - with
-                progression you can actually recover from.
-              </p>
-              <ul class="mini">
-                <li>2–5 sessions / week</li>
-                <li>Technique cues + demo links</li>
-                <li>Progression auto-adjustments</li>
-              </ul>
-            </article>
+    <div class="cards">
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">🏋️</div>
+        <h3>Training plan</h3>
+        <p>
+          A program built for your experience level, equipment, and weekly schedule - with
+          progression you can actually recover from.
+        </p>
+        <ul class="mini">
+          <li>2–5 sessions / week</li>
+          <li>Technique cues + demo links</li>
+          <li>Progression auto-adjustments</li>
+        </ul>
+      </article>
 
-            <article class="card">
-              <div class="card__icon" aria-hidden="true">🥗</div>
-              <h3>Nutrition framework</h3>
-              <p>
-                Macros or hand portions - your choice. We prioritize consistency, protein, and meals
-                you enjoy.
-              </p>
-              <ul class="mini">
-                <li>Targets that fit real life</li>
-                <li>Flexible meal templates</li>
-                <li>Travel + weekends included</li>
-              </ul>
-            </article>
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">🥗</div>
+        <h3>Nutrition framework</h3>
+        <p>
+          Macros or hand portions - your choice. We prioritize consistency, protein, and meals you
+          enjoy.
+        </p>
+        <ul class="mini">
+          <li>Targets that fit real life</li>
+          <li>Flexible meal templates</li>
+          <li>Travel + weekends included</li>
+        </ul>
+      </article>
 
-            <article class="card">
-              <div class="card__icon" aria-hidden="true">💬</div>
-              <h3>Check-ins & support</h3>
-              <p>
-                Weekly check-ins for feedback, course correction, and accountability. Message any
-                time - get answers fast.
-              </p>
-              <ul class="mini">
-                <li>Weekly review + tweaks</li>
-                <li>Form checks (video)</li>
-                <li>Habit + mindset coaching</li>
-              </ul>
-            </article>
-          </div>
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">💬</div>
+        <h3>Check-ins & support</h3>
+        <p>
+          Weekly check-ins for feedback, course correction, and accountability. Message any time -
+          get answers fast.
+        </p>
+        <ul class="mini">
+          <li>Weekly review + tweaks</li>
+          <li>Form checks (video)</li>
+          <li>Habit + mindset coaching</li>
+        </ul>
+      </article>
+    </div>
 
-          <div class="banner">
-            <div>
-              <h3>Not sure where to start?</h3>
-              <p class="muted">
-                Take the 2-minute intake and I'll recommend the best starting plan.
-              </p>
-            </div>
-            <a class="btn" href="#contact">Take the intake</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- COACH -->
-      <section class="section" id="coach">
-        <div class="container split">
-          <div class="split__media">
-            <img class="portrait" src="assets/coach.png" loading="lazy" />
-          </div>
-
-          <div class="split__copy">
-            <p class="eyebrow">MEET YOUR COACH</p>
-            <h2>Hi, I'm Adam. I coach people who want results without extremes.</h2>
-            <p class="muted">
-              My approach blends strength training fundamentals, flexible nutrition, and behavior
-              change - so you don't fall off the plan the moment life gets busy.
-            </p>
-
-            <div class="bullets">
-              <div class="bullet">
-                <h3>Practical programming</h3>
-                <p>Simple structure, clear progression, minimal fluff.</p>
-              </div>
-              <div class="bullet">
-                <h3>Food you actually like</h3>
-                <p>No "perfect meals" required - just repeatable basics.</p>
-              </div>
-              <div class="bullet">
-                <h3>Accountability that works</h3>
-                <p>Weekly check - ins, real feedback, and fast adjustments.</p>
-              </div>
-            </div>
-
-            <a class="btn" href="#packages">View packages</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- PACKAGES -->
-      <section class="section section--alt" id="packages">
-        <div class="container">
-          <div class="section__head">
-            <h2>Coaching packages</h2>
-            <p class="muted">Choose a runway that matches your goal timeline.</p>
-          </div>
-
-          <div class="pricing">
-            <article class="price">
-              <div class="price__top">
-                <h3>Starter</h3>
-                <p class="muted">Best for momentum + habit reset</p>
-              </div>
-              <div class="price__tag">
-                <span class="price__num">8</span><span class="price__unit">weeks</span>
-              </div>
-              <ul class="checklist">
-                <li>Training + nutrition setup</li>
-                <li>Weekly check-ins</li>
-                <li>Chat support (business hours)</li>
-              </ul>
-              <a class="btn btn--ghost" href="#contact">Ask about Starter</a>
-            </article>
-
-            <article class="price price--featured">
-              <div class="badge">Most popular</div>
-              <div class="price__top">
-                <h3>Transform</h3>
-                <p class="muted">Best for body recomposition</p>
-              </div>
-              <div class="price__tag">
-                <span class="price__num">16</span><span class="price__unit">weeks</span>
-              </div>
-              <ul class="checklist">
-                <li>Everything in Starter</li>
-                <li>Form reviews (video)</li>
-                <li>Monthly goal recalibration</li>
-              </ul>
-              <a class="btn" href="#contact">Apply for Transform</a>
-            </article>
-
-            <article class="price">
-              <div class="price__top">
-                <h3>Year-Round</h3>
-                <p class="muted">Best for long-term performance</p>
-              </div>
-              <div class="price__tag">
-                <span class="price__num">12</span><span class="price__unit">months</span>
-              </div>
-              <ul class="checklist">
-                <li>Periodized training blocks</li>
-                <li>Nutrition phases (cut/maintain)</li>
-                <li>Priority support</li>
-              </ul>
-              <a class="btn btn--ghost" href="#contact">Ask about Year-Round</a>
-            </article>
-          </div>
-
-          <details class="faq">
-            <summary>FAQ: Do I need a full gym?</summary>
-            <p>
-              No. The plan is written around your equipment (home, gym, or hybrid). If you have
-              dumbbells and a bench, that's enough to progress.
-            </p>
-          </details>
-          <details class="faq">
-            <summary>FAQ: Do you do meal plans?</summary>
-            <p>
-              We use targets + templates (and optional examples). The focus is sustainability,
-              flexibility, and learning what works for you.
-            </p>
-          </details>
-          <details class="faq">
-            <summary>FAQ: How fast will I see results?</summary>
-            <p>
-              Most clients notice energy, consistency, and strength improvements in 2–3 weeks.
-              Visible changes typically follow over 6–12+ weeks depending on goal and adherence.
-            </p>
-          </details>
-        </div>
-      </section>
+    <div class="banner">
+      <div>
+        <h3>Not sure where to start?</h3>
+        <p class="muted">Take the 2-minute intake and I'll recommend the best starting plan.</p>
+      </div>
+      <a class="btn scroll-top-btn" href="#top">Apply</a>
+    </div>
+  </div>
+</section>
 
       <!-- CONTACT CTA -->
       <section class="section" id="contact">

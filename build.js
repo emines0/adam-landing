@@ -24,10 +24,10 @@ const PARTIALS = [
   { raw: "\n    <main>\n" },
 
   "hero.html",
-  "results.html",
-  "method.html",
   "coach.html",
   "packages.html",
+  "results.html",
+  "method.html",
   "contact.html",
   "modal.html",
 
