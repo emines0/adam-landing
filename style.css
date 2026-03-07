@@ -259,6 +259,35 @@ h1 {
     max-width: 100%;
     box-sizing: border-box;
   }
+
+  /* Contact / thanks step: stack vertically, centered */
+  .hero__grid--stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    transition: all 0.5s ease;
+  }
+  .hero__grid--stacked .hero__copy {
+    order: 1;
+    width: 100%;
+    max-width: 760px;
+  }
+  .hero__grid--stacked .hero__media {
+    order: 2;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .hero__grid--stacked .hero__card {
+    position: static;
+    margin-top: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero__grid--stacked .quiz-panel {
+    max-width: 760px;
+  }
 }
 .hero__image {
   border-radius: var(--radius-lg);
@@ -1358,4 +1387,134 @@ textarea {
   text-transform: none;
   letter-spacing: 0;
   font-size: 10px;
+}
+
+/* ── Hero grid layout transition ── */
+.hero__grid {
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero__copy,
+.hero__media {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stacked entry animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero__grid--stacked .hero__copy {
+  animation: slideDown 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.hero__grid--stacked .hero__media {
+  animation: fadeUp 0.5s 0.15s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Quiz step transition — already has qFade, upgrade it */
+@keyframes qFade {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes qFadeBack {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.quiz-step.is-active {
+  animation: qFade 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Smooth grid layout transition when stacking/unstacking */
+.hero__grid {
+  transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero__copy,
+.hero__media {
+  transition:
+    order 0s,
+    max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    margin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Back direction animation */
+.quiz-step.is-active.dir-back {
+  animation: qFadeBack 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ── Your answers toggle ── */
+.quiz-answers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.quiz-answers-header label {
+  margin-bottom: 0;
+}
+.quiz-answers-toggle {
+  background: none;
+  border: 1px solid rgba(151, 196, 255, 0.3);
+  border-radius: 8px;
+  color: #7aadff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+}
+.quiz-answers-toggle:hover {
+  background: rgba(42, 109, 244, 0.12);
+  border-color: rgba(151, 196, 255, 0.55);
+  color: #b8d4ff;
+}
+.quiz-answers-body {
+  overflow: hidden;
+  max-height: 0;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    margin-top 0.3s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+.quiz-answers-body.is-open {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: 8px;
+}
+.quiz-answers-body[hidden] {
+  display: block !important; /* Let CSS handle visibility, not HTML hidden attr */
 }

@@ -83,7 +83,7 @@
               <button class="quiz-opt" data-group="goal" data-val="glutes">Build glutes</button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="2" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="2" disabled>Next</button>
             </div>
           </div>
 
@@ -97,8 +97,8 @@
               <button class="quiz-opt" data-group="freq" data-val="unsure">Not sure</button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="1">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="3" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="1">Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="3" disabled>Next</button>
             </div>
           </div>
 
@@ -126,12 +126,12 @@
               </button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next</button>
             </div>
           </div>
 
-          <!-- Step 3 – ATHLETE variant (shown only when goal = "fat" / Athlete improvement) -->
+          <!-- Step 3b – ATHLETE variant -->
           <div class="quiz-step" data-step="3b">
             <p class="quiz-question">
               What aspect of your performance do you most want to improve?
@@ -155,12 +155,12 @@
               </button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next</button>
             </div>
           </div>
 
-          <!-- Step 3 – INJURY/RECOVERY variant -->
+          <!-- Step 3c – INJURY/RECOVERY variant -->
           <div class="quiz-step" data-step="3c">
             <p class="quiz-question">What best describes your current situation?</p>
             <div class="quiz-options quiz-options--3col">
@@ -184,8 +184,8 @@
               </button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next</button>
             </div>
           </div>
 
@@ -201,8 +201,8 @@
               </button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="3">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="5" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="3">Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="5" disabled>Next</button>
             </div>
           </div>
 
@@ -222,8 +222,8 @@
               <button class="quiz-opt" data-group="missing" data-val="all">All</button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="4">← Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="6" disabled>Next →</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="4">Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="6" disabled>Next</button>
             </div>
           </div>
 
@@ -242,9 +242,9 @@
               </button>
             </div>
             <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="5">← Back</button>
+              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="5">Back</button>
               <button class="quiz-nav-btn quiz-nav-btn--next" data-next="contact" disabled>
-                Next →
+                Next
               </button>
             </div>
           </div>
@@ -252,7 +252,6 @@
           <!-- Contact -->
           <div class="quiz-step" data-step="contact">
             <p class="quiz-contact-title">Contact Information</p>
-            <!-- Replace YOUR_FORM_TOKEN with your FormKeep token -->
             <form
               id="quizForm"
               action="https://formkeep.com/f/YOUR_FORM_TOKEN"
@@ -292,7 +291,6 @@
               <div class="quiz-field">
                 <label for="qPhone">Phone</label>
                 <div class="quiz-phone-row">
-                  <!-- Country dial code picker -->
                   <div class="dial-picker" id="dialPicker">
                     <button
                       type="button"
@@ -336,16 +334,18 @@
                 </div>
               </div>
 
+              <!-- Your answers toggle -->
               <div class="quiz-field">
-                <label for="qSummary">Your answers</label>
-                <textarea
-                  id="qSummary"
-                  name="quiz_summary"
-                  class="quiz-summary-textarea"
-                  readonly
-                  rows="12"
-                  tabindex="-1"
-                ></textarea>
+                <div class="quiz-answers-header">
+                  <label>Your answers</label>
+                  <button type="button" class="quiz-answers-toggle" id="answersToggle">
+                    Show my answers
+                  </button>
+                </div>
+                <div class="quiz-answers-body" id="answersBody" hidden>
+                  <div id="qSummaryDisplay" class="quiz-summary-display"></div>
+                </div>
+                <input type="hidden" id="qSummary" name="quiz_summary" />
               </div>
 
               <div class="quiz-field">
@@ -362,14 +362,17 @@
                 ></textarea>
               </div>
 
-              <!-- Combined hidden field sent to FormKeep -->
               <input type="hidden" name="full_message" id="fFullMessage" />
 
               <div class="quiz-bottom-row">
-                <button type="button" class="quiz-nav-btn quiz-nav-btn--back" data-back="6">
-                  ← Back
+                <button
+                  type="button"
+                  class="quiz-nav-btn quiz-nav-btn--back scroll-top-btn"
+                  data-back="6"
+                >
+                  Back
                 </button>
-                <button type="submit" class="quiz-submit-btn" id="quizSubmit">Contact me →</button>
+                <button type="submit" class="quiz-submit-btn" id="quizSubmit">Contact me</button>
               </div>
               <p class="quiz-privacy">
                 When you submit the form, we use your contact information to send you special
@@ -397,7 +400,6 @@
     </div>
 
     <div class="hero__media">
-      <!-- Replace later with real photo -->
       <img
         class="hero__image"
         src="assets/coach-hero.png"

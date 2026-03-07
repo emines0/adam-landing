@@ -154,17 +154,44 @@ function getStep3() {
   return "3";
 }
 
-function showStep(id) {
-  allSteps.forEach(s => s.classList.remove("is-active"));
+let _prevStepNum = 1;
+
+function showStep(id, isBack = false) {
+  allSteps.forEach(s => {
+    s.classList.remove("is-active");
+    s.style.animationName = "";
+  });
   const t = document.querySelector(`.quiz-step[data-step="${id}"]`);
   if (!t) return;
+
+  // Pick animation direction
+  t.style.animationName = isBack ? "qFadeBack" : "qFade";
   t.classList.add("is-active");
+
   const n = parseInt(id);
   if (!isNaN(n)) progBar.style.width = (n / (TOTAL + 1)) * 100 + "%";
   else if (id === "contact" || id === "thanks") progBar.style.width = "100%";
+
+  // On contact/thanks step: stack quiz above hero__media; otherwise side-by-side
+  const heroGrid = document.querySelector(".hero__grid");
+  if (heroGrid) {
+    heroGrid.classList.toggle("hero__grid--stacked", id === "contact" || id === "thanks");
+  }
 }
 
 document.getElementById("quizSteps").addEventListener("click", function (e) {
+  // Answers toggle
+  if (e.target.closest("#answersToggle")) {
+    const body = document.getElementById("answersBody");
+    if (body) {
+      const isOpen = body.classList.toggle("is-open");
+      e.target.closest("#answersToggle").textContent = isOpen
+        ? "Hide my answers"
+        : "Show my answers";
+    }
+    return;
+  }
+
   const opt = e.target.closest(".quiz-opt");
   const nextBtn = e.target.closest("[data-next]");
   const backBtn = e.target.closest("[data-back]");
@@ -183,21 +210,15 @@ document.getElementById("quizSteps").addEventListener("click", function (e) {
 
   if (nextBtn && !nextBtn.disabled) {
     let target = nextBtn.dataset.next;
-
-    // Route to the correct Step 3 variant based on goal
     if (target === "3") target = getStep3();
-
     if (target === "contact") populateHidden();
-    showStep(target);
+    showStep(target, "forward");
   }
 
   if (backBtn) {
     let target = backBtn.dataset.back;
-
-    // When going back to Step 3, restore the correct variant
     if (target === "3") target = getStep3();
-
-    showStep(target);
+    showStep(target, "back");
   }
 });
 
