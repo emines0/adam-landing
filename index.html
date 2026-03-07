@@ -336,6 +336,35 @@
                 </div>
               </div>
 
+              <div class="quiz-field">
+                <label for="qSummary">Your answers</label>
+                <textarea
+                  id="qSummary"
+                  name="quiz_summary"
+                  class="quiz-summary-textarea"
+                  readonly
+                  rows="12"
+                  tabindex="-1"
+                ></textarea>
+              </div>
+
+              <div class="quiz-field">
+                <label for="qMessage"
+                  >Anything else you'd like to add?
+                  <span class="quiz-label-optional">(optional)</span></label
+                >
+                <textarea
+                  id="qMessage"
+                  name="message"
+                  class="quiz-message-textarea"
+                  rows="3"
+                  placeholder="Tell me about your schedule, goals, or anything relevant…"
+                ></textarea>
+              </div>
+
+              <!-- Combined hidden field sent to FormKeep -->
+              <input type="hidden" name="full_message" id="fFullMessage" />
+
               <div class="quiz-bottom-row">
                 <button type="button" class="quiz-nav-btn quiz-nav-btn--back" data-back="6">
                   ← Back
@@ -613,66 +642,6 @@
     </div>
   </div>
 </section>
-
-      <!-- CONTACT CTA -->
-      <section class="section" id="contact">
-        <div class="container">
-          <div class="cta">
-            <div class="cta__copy">
-              <h2>Ready to invest in yourself?</h2>
-              <p class="muted">
-                Fill out the form and I'll reply with next steps (and the best package based on your
-                goals).
-              </p>
-              <ul class="mini">
-                <li>Expect a reply within 1–2 business days</li>
-                <li>No pressure - just clarity</li>
-                <li>You'll get a simple intake link</li>
-              </ul>
-            </div>
-
-            <form class="form" id="leadForm" novalidate>
-              <div class="form__row">
-                <label>
-                  Name
-                  <input name="name" type="text" autocomplete="name" required minlength="2" />
-                </label>
-                <label>
-                  Email
-                  <input name="email" type="email" autocomplete="email" required />
-                </label>
-              </div>
-
-              <label>
-                What's your main goal?
-                <select name="goal" required>
-                  <option value="" selected disabled>Select one…</option>
-                  <option>Fat loss</option>
-                  <option>Muscle gain</option>
-                  <option>Strength / performance</option>
-                  <option>Habits / consistency</option>
-                </select>
-              </label>
-
-              <label>
-                Message
-                <textarea
-                  name="message"
-                  rows="5"
-                  placeholder="Tell me about your schedule, training background, and what's been hard to stick with."
-                  required
-                  minlength="10"
-                ></textarea>
-              </label>
-
-              <div class="form__actions">
-                <button class="btn" type="submit">Send</button>
-                <p class="form__note muted" id="formNote" role="status" aria-live="polite"></p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
 
       <!-- MODAL (gallery) -->
       <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Image preview">

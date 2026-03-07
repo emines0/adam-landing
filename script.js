@@ -201,6 +201,79 @@ document.getElementById("quizSteps").addEventListener("click", function (e) {
   }
 });
 
+// ── Human-readable labels for quiz answers ──────────────────────────────────
+const ANSWER_LABELS = {
+  goal: {
+    athlete: "Athlete improvement",
+    muscle: "Build muscles",
+    energy: "Get more energy and structure",
+    fat: "Fat reduction",
+    injury: "Recover from injury / Prevent injury",
+    glutes: "Build glutes",
+  },
+  freq: {
+    2: "2 times per week",
+    3: "3 times per week",
+    "4+": "4+ times per week",
+    unsure: "Not sure yet",
+  },
+  challenge: {
+    diet: "Hard to stick to a diet",
+    structure: "Lack of structure in training",
+    motivation: "Struggle with motivation",
+    time: "Not enough time",
+    tried: "Tried a lot without results",
+    coaching: "Need coaching",
+    speed: "Speed & explosiveness",
+    strength: "Strength & power",
+    endurance: "Recovery",
+    injury: "Staying injury-free",
+    "body-comp": "Body composition",
+    consistency: "Training consistency",
+    rehab: "Recovering from a recent injury",
+    chronic: "Managing a chronic / recurring issue",
+    prevention: "No injury now, want to stay that way",
+    "post-surgery": "Post-surgery rehabilitation",
+    pain: "Pain during training",
+    return: "Returning to sport after time off",
+  },
+  ready: {
+    now: "Ready to start now",
+    soon: "Want to start within the next few weeks",
+  },
+  missing: {
+    "diet-structure": "Nutrition structure",
+    "training-structure": "Training structure",
+    accountability: "Accountability and check-ins",
+    all: "All of the above",
+  },
+  commit: {
+    yes: "Yes, ready to do what it takes",
+    support: "Yes, but needs support and guidance",
+    unsure: "A little unsure",
+  },
+};
+
+const QUESTION_LABELS = {
+  goal: "How can I help you reach your goal?",
+  freq: "How many times per week do you want to train?",
+  challenge: "What is your biggest challenge?",
+  ready: "How ready are you to start making real progress?",
+  missing: "What do you feel you're missing most right now?",
+  commit: "Are you willing to follow a plan if it suits you?",
+};
+
+function buildSummary() {
+  return Object.entries(QUESTION_LABELS)
+    .filter(([key]) => answers[key])
+    .map(([key, question]) => {
+      const raw = answers[key];
+      const label = (ANSWER_LABELS[key] && ANSWER_LABELS[key][raw]) || raw;
+      return `${question}\n✅ ${label}`;
+    })
+    .join("\n");
+}
+
 function populateHidden() {
   document.getElementById("fGoal").value = answers.goal || "";
   document.getElementById("fFreq").value = answers.freq || "";
@@ -208,6 +281,34 @@ function populateHidden() {
   document.getElementById("fReady").value = answers.ready || "";
   document.getElementById("fMissing").value = answers.missing || "";
   document.getElementById("fCommit").value = answers.commit || "";
+
+  // Populate the read-only summary textarea
+  const summary = buildSummary();
+  const summaryEl = document.getElementById("qSummary");
+  if (summaryEl) summaryEl.value = summary;
+  const displayEl = document.getElementById("qSummaryDisplay");
+  if (displayEl) {
+    // Build structured Q&A pairs — no extra blank lines
+    const entries = Object.entries(QUESTION_LABELS)
+      .filter(([key]) => answers[key])
+      .map(([key, question]) => {
+        const raw = answers[key];
+        const label = (ANSWER_LABELS[key] && ANSWER_LABELS[key][raw]) || raw;
+        return `<div class="quiz-summary-pair"><p class="quiz-summary-question"><strong>${question}</strong></p><p class="quiz-summary-answer">✅ ${label}</p></div>`;
+      });
+    displayEl.innerHTML = entries.join("");
+  }
+
+  // Combine summary + free message into full_message hidden field
+  updateFullMessage();
+}
+
+function updateFullMessage() {
+  const summary = document.getElementById("qSummary")?.value || "";
+  const message = document.getElementById("qMessage")?.value.trim() || "";
+  const combined = message ? summary + "\n\n---\n\nAdditional message:\n" + message : summary;
+  const el = document.getElementById("fFullMessage");
+  if (el) el.value = combined;
 }
 
 const quizForm = document.getElementById("quizForm");
@@ -230,8 +331,12 @@ qEmailInput?.addEventListener("input", () => {
   if (qEmailField?.classList.contains("has-error")) validateEmail();
 });
 
+// Live update full_message when user types in free-text area
+document.getElementById("qMessage")?.addEventListener("input", updateFullMessage);
+
 quizForm?.addEventListener("submit", async function (e) {
   e.preventDefault();
+  updateFullMessage(); // ensure latest free-text is captured
   populateHidden();
 
   const name = document.getElementById("qName").value.trim();

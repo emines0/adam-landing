@@ -28,7 +28,6 @@ const PARTIALS = [
   "packages.html",
   "results.html",
   "method.html",
-  "contact.html",
   "modal.html",
 
   // </main> close tag

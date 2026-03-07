@@ -286,6 +286,35 @@
                 </div>
               </div>
 
+              <div class="quiz-field">
+                <label for="qSummary">Your answers</label>
+                <textarea
+                  id="qSummary"
+                  name="quiz_summary"
+                  class="quiz-summary-textarea"
+                  readonly
+                  rows="12"
+                  tabindex="-1"
+                ></textarea>
+              </div>
+
+              <div class="quiz-field">
+                <label for="qMessage"
+                  >Anything else you'd like to add?
+                  <span class="quiz-label-optional">(optional)</span></label
+                >
+                <textarea
+                  id="qMessage"
+                  name="message"
+                  class="quiz-message-textarea"
+                  rows="3"
+                  placeholder="Tell me about your schedule, goals, or anything relevant…"
+                ></textarea>
+              </div>
+
+              <!-- Combined hidden field sent to FormKeep -->
+              <input type="hidden" name="full_message" id="fFullMessage" />
+
               <div class="quiz-bottom-row">
                 <button type="button" class="quiz-nav-btn quiz-nav-btn--back" data-back="6">
                   ← Back
