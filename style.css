@@ -922,6 +922,18 @@ h1 {
   border-radius: 22px;
   padding: 18px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.price .checklist {
+  flex: 1;
+}
+.price .btn {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 16px auto 0;
+  text-align: center;
+  box-sizing: border-box;
 }
 .price__top h3 {
   margin: 0 0 6px;
@@ -1514,7 +1526,4 @@ textarea {
   max-height: 800px;
   opacity: 1;
   margin-top: 8px;
-}
-.quiz-answers-body[hidden] {
-  display: block !important; /* Let CSS handle visibility, not HTML hidden attr */
 }
