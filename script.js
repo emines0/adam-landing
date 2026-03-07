@@ -184,6 +184,7 @@ document.getElementById("quizSteps").addEventListener("click", function (e) {
   if (e.target.closest("#answersToggle")) {
     const body = document.getElementById("answersBody");
     if (body) {
+      body.removeAttribute("hidden");
       const isOpen = body.classList.toggle("is-open");
       e.target.closest("#answersToggle").textContent = isOpen
         ? "Hide my answers"

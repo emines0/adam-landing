@@ -340,6 +340,13 @@ h1 {
   line-height: 1;
   text-transform: uppercase;
 }
+
+.quiz-contact-header {
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: capitalize;
+  margin: 15px 0;
+}
 .quiz-logo__bottom {
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 900;
@@ -1138,11 +1145,16 @@ textarea {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: center;
+}
+.footer__inner > *:last-child {
+  text-align: right;
 }
 .footer__links {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 .footer__links a {
