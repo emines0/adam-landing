@@ -25,9 +25,9 @@ const PARTIALS = [
 
   "hero.html",
   "coach.html",
+  "clients.html",
+  "how-it-works.html",
   "packages.html",
-  "results.html",
-  "method.html",
   "modal.html",
 
   // </main> close tag

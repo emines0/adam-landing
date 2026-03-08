@@ -57,8 +57,7 @@
         <div class="quiz-logo">
           <div class="quiz-logo__top">ADAM KAVKA</div>
           <div class="quiz-logo__bottom">COACHING</div>
-          <div class="quiz-contact-header">Contact form</div>
-          <p class="quiz-tagline">Apply and answer the following questions.</p>
+          <p class="quiz-tagline"><b>Contact me</b> by answering the following questions below.</p>
         </div>
 
         <div class="quiz-progress">
@@ -238,9 +237,6 @@
               <button class="quiz-opt" data-group="commit" data-val="support">
                 Yes, but I need support and guidance
               </button>
-              <button class="quiz-opt" data-group="commit" data-val="unsure">
-                I'm a little unsure
-              </button>
             </div>
             <div class="quiz-nav">
               <button class="quiz-nav-btn quiz-nav-btn--back" data-back="5">Back</button>
@@ -403,7 +399,6 @@
       </div>
       <!-- /quiz-panel -->
     </div>
-
     <div class="hero__media">
       <img
         class="hero__image"
@@ -426,35 +421,219 @@
 
 <!-- COACH -->
 <section class="section" id="coach">
-  <div class="container split">
-    <div class="split__media">
-      <img class="portrait" src="assets/coach-toned.jpg" loading="lazy" />
+  <div class="container coach-layout" id="coachLayout">
+    <div class="split__media coach-media" id="coachMedia">
+      <img class="portrait" src="assets/coach3.jpg" loading="lazy" />
     </div>
-
-    <div class="split__copy">
+    <div class="split__copy coach-copy" id="coachCopy">
       <p class="eyebrow">MEET YOUR COACH</p>
-      <h2>Hi, I'm Adam. I coach people who want results without extremes.</h2>
-      <p class="muted">
-        My approach blends strength training fundamentals, flexible nutrition, and behavior change -
-        so you don't fall off the plan the moment life gets busy.
-      </p>
 
       <div class="bullets">
+        <!-- ABOUT -->
         <div class="bullet">
-          <h3>Practical programming</h3>
-          <p>Simple structure, clear progression, minimal fluff.</p>
+          <h3>About</h3>
+          <p>
+            I'm a previous professional football player, that has been working as a personal trainer
+            since 2014 and have become the most selling PT in one of the biggest gym chain in Norway
+            and Slovakia.
+          </p>
+          <div class="expandable" id="aboutExtra">
+            <div>
+              <p class="space">
+                Throughout my career, I became the top-selling personal trainer within one of the
+                largest gym chains operating in Norway and Slovakia. My coaching experience ranges
+                from elite athletes across various sports to individuals looking to transform their
+                lifestyle, improve fitness, and maintain long-term health. I have great experience
+                with professional athletes within various sports, but also regarding regular clients
+                with need to change or keep up a healthy lifestyle.
+              </p>
+            </div>
+          </div>
+          <button class="btn-expand" data-target="aboutExtra" type="button">
+            <span class="btn-expand__text">More</span>
+          </button>
         </div>
+
+        <!-- EXPERIENCES -->
         <div class="bullet">
-          <h3>Food you actually like</h3>
-          <p>No "perfect meals" required - just repeatable basics.</p>
+          <h3>Experiences</h3>
+          <p class="space">
+            <b>Football:</b> previous professional football player, football coach and physical
+            trainer. Personal trainer for football players in Premier League, Bundesliga,
+            Eliteserien, Major Soccer League, Ekstraklasa, Slovak &amp; Czech first league.
+          </p>
+          <div class="expandable is-open" id="expExtra">
+            <div>
+              <p class="space">
+                <b>Other sports:</b> personal trainer for professional MMA fighters, tennis players,
+                handball players, and basketball players. I have wide experience when it comes to
+                rehabilitation, technique training, imbalances, weight loss, lifestyle changes, and
+                hypertrophy training.
+              </p>
+            </div>
+          </div>
+          <button class="btn-expand" data-target="expExtra" type="button">
+            <span class="btn-expand__text">Less</span>
+          </button>
         </div>
-        <div class="bullet">
-          <h3>Accountability that works</h3>
-          <p>Weekly check - ins, real feedback, and fast adjustments.</p>
+
+        <!-- CERTIFICATES -->
+        <div class="bullet" id="certBullet">
+          <h3>Certificates</h3>
+          <ul class="dot-list">
+            <li>EXOS Power and Strength</li>
+            <li>Trainer Certificate – Level IV for Different Sports</li>
+            <li>Trainer Certificate – Level III Fitness Trainer</li>
+
+            <li class="cert-extra">EXOS Speed</li>
+            <li class="cert-extra">EXOS Mentorship Phase 1</li>
+            <li class="cert-extra">Triphasic Training Course</li>
+            <li class="cert-extra">DNS Sports Course Trainer Certificate I, II, III</li>
+            <li class="cert-extra">DNS (Dynamic Neuromuscular Stabilization) Course</li>
+            <li class="cert-extra">Functional Strength and Power with Kettlebell</li>
+            <li class="cert-extra">Reaching Maximum Growth &amp; Strength</li>
+            <li class="cert-extra">Hypertrophy Conference 2023</li>
+            <li class="cert-extra">Physiological Training</li>
+            <li class="cert-extra">Muscle Contractions</li>
+
+            <li class="cert-extra">Powerlifting Technique and Methodic Training</li>
+            <li class="cert-extra">Powerlifting School</li>
+            <li class="cert-extra">Squat School</li>
+
+            <li class="cert-extra">Physiotherapy for Sports Injuries</li>
+            <li class="cert-extra">Rehabilitation After Post-Op ACL Surgery</li>
+            <li class="cert-extra">Prevention and Treatment of Adductors</li>
+            <li class="cert-extra">SM System (Spiral Stabilization)</li>
+            <li class="cert-extra">Functional Patterns</li>
+
+            <li class="cert-extra">Diagnostics for Trainers</li>
+            <li class="cert-extra">Real Diagnostics of the Human Body</li>
+            <li class="cert-extra">Assessments: Fundamental Concepts and Techniques</li>
+
+            <li class="cert-extra">Modern Nutrition</li>
+
+            <li class="cert-extra">UEFA Grassroots Charter C Licence</li>
+            <li class="cert-extra">Certificate of Basic Sports Training</li>
+            <li class="cert-extra">Certificate in Kinesio Taping</li>
+            <li class="cert-extra">Pregnancy Training</li>
+            <li class="cert-extra">Post-Pregnancy Training</li>
+            <li class="cert-extra">Certified KAATSU Specialist (the only one in Norway)</li>
+          </ul>
+          <button class="btn-expand" id="certToggle" type="button">
+            <span class="btn-expand__text">More</span>
+          </button>
         </div>
       </div>
 
-      <a class="btn scroll-top-btn" href="#packages">Apply</a>
+      <a class="btn scroll-top-btn" href="#packages">Contact me</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section" id="results">
+  <div class="container">
+    <div class="section__head">
+      <h2>Client snapshots</h2>
+      <a class="btn scroll-top-btn btn--ghost" href="#contact">Contact me</a>
+    </div>
+
+    <div class="grid gallery" id="gallery">
+      <!-- SVG placeholders: swap for real client photos later -->
+      <button class="tile" data-full="./assets/before-after.png" aria-label="Open result 1">
+        <img src="./assets/before-after.png" alt="Result placeholder 1" loading="lazy" />
+      </button>
+      <button class="tile" data-full="assets/result.png" aria-label="Open result 2">
+        <img src="assets/result.png" alt="Result placeholder 2" loading="lazy" />
+      </button>
+      <button class="tile" data-full="assets/progress.png" aria-label="Open result 3">
+        <img src="assets/progress.png" alt="Result placeholder 3" loading="lazy" />
+      </button>
+      <button class="tile" data-full="assets/consistency.png" aria-label="Open result 4">
+        <img src="assets/consistency.png" alt="Result placeholder 4" loading="lazy" />
+      </button>
+      <button class="tile" data-full="assets/transformation.png" aria-label="Open result 5">
+        <img src="assets/transformation.png" alt="Result placeholder 5" loading="lazy" />
+      </button>
+      <button class="tile" data-full="assets/data.png" aria-label="Open result 6">
+        <img src="assets/data.png" alt="Result placeholder 6" loading="lazy" />
+      </button>
+    </div>
+
+    <!-- 
+          <div class="quote">
+            <p class="quote__text" id="quoteText">
+              "Finally a plan I can stick to without my whole day revolving around it."
+            </p>
+            <p class="quote__meta" id="quoteMeta">— Client, 12-week block</p>
+            <div class="quote__controls">
+              <button class="btn btn--ghost btn--sm" id="quotePrev" type="button">Prev</button>
+              <button class="btn btn--ghost btn--sm" id="quoteNext" type="button">Next</button>
+            </div>
+          </div> -->
+  </div>
+</section>
+
+<!-- METHOD / APP -->
+<section class="section section--alt" id="method">
+  <div class="container">
+    <div class="section__head">
+      <h2>Everything in one simple system</h2>
+      <p class="muted">
+        The goal: remove guesswork. You train, you eat normally, you check in, we adjust based on
+        real data.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">💬</div>
+        <h3>Free Consultation</h3>
+        <p>
+          A one-on-one conversation to understand your goals, training background, and current
+          physical condition.
+        </p>
+        <ul class="mini">
+          <li>15-30min consultation</li>
+          <li>Training history + injury consideration</li>
+          <li>Recommended training strategy</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">🤝</div>
+        <h3>Agreement</h3>
+        <p>
+          Once both sides agree to move forward, you will receive access to the training platform.
+        </p>
+        <ul class="mini">
+          <li>Access to the coaching app</li>
+          <li>Personalized training & meal plan</li>
+          <li>Progress tracking</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card__icon" aria-hidden="true">📊</div>
+        <h3>Check-ins & support</h3>
+        <p>
+          Weekly check-ins for feedback, course correction, accountability, motivation, progress
+          tracking, and support.
+        </p>
+        <ul class="mini">
+          <li>Weekly review + tweaks</li>
+          <li>Form checks (video)</li>
+          <li>Habit + mindset coaching</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="banner">
+      <div>
+        <h3>Not sure where to start?</h3>
+        <p class="muted">Take the 2-minute intake and I'll recommend the best starting plan.</p>
+      </div>
+      <a class="btn scroll-top-btn" href="#top">Contact me</a>
     </div>
   </div>
 </section>
@@ -483,7 +662,7 @@
           <li>Form reviews (video)</li>
           <li>Chat support</li>
         </ul>
-        <a class="btn scroll-top-btn btn--ghost" href="#contact">Apply for Starter</a>
+        <a class="btn scroll-top-btn btn--ghost" href="#contact">Contact me</a>
       </article>
 
       <article class="price price--featured">
@@ -500,7 +679,7 @@
           <li>Nutrition phases (cut/maintain)</li>
           <li>Priority support</li>
         </ul>
-        <a class="btn scroll-top-btn" href="#contact">Apply for Pro</a>
+        <a class="btn scroll-top-btn" href="#contact">Contact me</a>
       </article>
 
       <article class="price">
@@ -515,7 +694,7 @@
           <li>Everything in Pro</li>
           <li>Personalized program adjustments</li>
         </ul>
-        <a class="btn scroll-top-btn btn--ghost" href="#contact">Apply for Pro plus</a>
+        <a class="btn scroll-top-btn btn--ghost" href="#contact">Contact me</a>
       </article>
     </div>
 
@@ -543,113 +722,6 @@
   </div>
 </section>
 
-      <!-- RESULTS -->
-      <section class="section" id="results">
-        <div class="container">
-          <div class="section__head">
-            <h2>Client snapshots</h2>
-          </div>
-
-          <div class="grid gallery" id="gallery">
-            <!-- SVG placeholders: swap for real client photos later -->
-            <button class="tile" data-full="./assets/before-after.png" aria-label="Open result 1">
-              <img src="./assets/before-after.png" alt="Result placeholder 1" loading="lazy" />
-            </button>
-            <button class="tile" data-full="assets/result.png" aria-label="Open result 2">
-              <img src="assets/result.png" alt="Result placeholder 2" loading="lazy" />
-            </button>
-            <button class="tile" data-full="assets/progress.png" aria-label="Open result 3">
-              <img src="assets/progress.png" alt="Result placeholder 3" loading="lazy" />
-            </button>
-            <button class="tile" data-full="assets/consistency.png" aria-label="Open result 4">
-              <img src="assets/consistency.png" alt="Result placeholder 4" loading="lazy" />
-            </button>
-            <button class="tile" data-full="assets/transformation.png" aria-label="Open result 5">
-              <img src="assets/transformation.png" alt="Result placeholder 5" loading="lazy" />
-            </button>
-            <button class="tile" data-full="assets/data.png" aria-label="Open result 6">
-              <img src="assets/data.png" alt="Result placeholder 6" loading="lazy" />
-            </button>
-          </div>
-
-          <div class="quote">
-            <p class="quote__text" id="quoteText">
-              "Finally a plan I can stick to without my whole day revolving around it."
-            </p>
-            <p class="quote__meta" id="quoteMeta">— Client, 12-week block</p>
-            <div class="quote__controls">
-              <button class="btn btn--ghost btn--sm" id="quotePrev" type="button">Prev</button>
-              <button class="btn btn--ghost btn--sm" id="quoteNext" type="button">Next</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-<!-- METHOD / APP -->
-<section class="section section--alt" id="method">
-  <div class="container">
-    <div class="section__head">
-      <h2>Everything in one simple system</h2>
-      <p class="muted">
-        The goal: remove guesswork. You train, you eat normally, you check in, we adjust based on
-        real data.
-      </p>
-    </div>
-
-    <div class="cards">
-      <article class="card">
-        <div class="card__icon" aria-hidden="true">🏋️</div>
-        <h3>Training plan</h3>
-        <p>
-          A program built for your experience level, equipment, and weekly schedule - with
-          progression you can actually recover from.
-        </p>
-        <ul class="mini">
-          <li>2–5 sessions / week</li>
-          <li>Technique cues + demo links</li>
-          <li>Progression auto-adjustments</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="card__icon" aria-hidden="true">🥗</div>
-        <h3>Nutrition framework</h3>
-        <p>
-          Macros or hand portions - your choice. We prioritize consistency, protein, and meals you
-          enjoy.
-        </p>
-        <ul class="mini">
-          <li>Targets that fit real life</li>
-          <li>Flexible meal templates</li>
-          <li>Travel + weekends included</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="card__icon" aria-hidden="true">💬</div>
-        <h3>Check-ins & support</h3>
-        <p>
-          Weekly check-ins for feedback, course correction, and accountability. Message any time -
-          get answers fast.
-        </p>
-        <ul class="mini">
-          <li>Weekly review + tweaks</li>
-          <li>Form checks (video)</li>
-          <li>Habit + mindset coaching</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="banner">
-      <div>
-        <h3>Not sure where to start?</h3>
-        <p class="muted">Take the 2-minute intake and I'll recommend the best starting plan.</p>
-      </div>
-      <a class="btn scroll-top-btn" href="#top">Apply</a>
-    </div>
-  </div>
-</section>
-
       <!-- MODAL (gallery) -->
       <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Image preview">
         <div class="modal__backdrop" data-close="true"></div>
@@ -662,26 +734,9 @@
 
     </main>
 
-    <footer class="footer">
+<footer class="footer">
       <div class="container footer__inner">
-        <div>
-          <div class="brand brand--footer">
-            <span class="brand__mark" aria-hidden="true"></span>
-            <span class="brand__text">AK Coaching</span>
-          </div>
-          <p class="muted">
-            Coaching that fits real life. Train smart. Eat normally. Stay consistent.
-          </p>
-        </div>
-
-        <div class="footer__links">
-          <a  href="" class="scroll-top-btn">Top</a>
-          <a href="#results">Clients</a>
-          <a href="#packages">Packages</a>
-          <a href="" class="scroll-top-btn">Contact</a>
-        </div>
-
-        <p class="muted">© <span id="year"></span> AK Coaching. All rights reserved.</p>
+        <p class="muted">© <span id="year"></span> <b>AK Coaching.</b> All rights reserved.</p>
       </div>
     </footer>
 

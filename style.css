@@ -162,6 +162,7 @@ textarea {
   color: var(--text);
   font-weight: 600;
 }
+
 .btn:hover {
   transform: translateY(-1px);
 }
@@ -178,6 +179,10 @@ textarea {
 .btn--sm {
   padding: 10px 12px;
   border-radius: 12px;
+}
+
+#results .btn {
+  margin-top: 20px;
 }
 
 /* Hero */
@@ -305,7 +310,7 @@ h1 {
   border-radius: 18px;
   border: 1px solid var(--line);
   background: rgba(16, 24, 51, 0.88);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(0px);
   padding: 16px 16px 14px;
   box-shadow: var(--shadow);
 }
@@ -781,11 +786,28 @@ h1 {
   margin: 0;
   font-size: clamp(24px, 2.4vw, 34px);
 }
+
+/* Results: desktop space-between, mobile stacked full width */
+#results .section__head {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#results .section__head h2 {
+  text-align: left;
+}
+#results .section__head .btn {
+  display: inline-flex;
+  width: auto;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
 .muted {
   color: var(--muted);
 }
 
 /* Gallery */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -874,6 +896,53 @@ h1 {
   margin: 4px 0;
 }
 
+/* Brand-mark dot bullets — used for certificates and method mini lists */
+.dot-list {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.dot-list li {
+  position: relative;
+  padding-left: 18px;
+  margin: 5px 0;
+  font-size: 14px;
+}
+.dot-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.48em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  box-shadow: 0 0 0 2px rgba(42, 109, 244, 0.18);
+}
+
+/* Apply dot-list style to .mini lists inside .card */
+.card .mini {
+  list-style: none;
+  padding-left: 20px;
+}
+.card .mini li {
+  position: relative;
+  padding-left: 18px;
+}
+.card .mini li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.48em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  box-shadow: 0 0 0 2px rgba(42, 109, 244, 0.18);
+}
+
 .banner {
   margin-top: 18px;
   border: 1px solid rgba(42, 109, 244, 0.25);
@@ -912,6 +981,13 @@ h1 {
   background: rgba(255, 255, 255, 0.02);
   border-radius: 18px;
   padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bullet > .btn-expand {
+  align-self: flex-end;
+  margin-top: 10px;
 }
 .bullet h3 {
   margin: 0 0 6px;
@@ -920,6 +996,182 @@ h1 {
 .bullet p {
   margin: 0;
   color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bullet p.space {
+  margin-top: 8px;
+}
+
+.bullet b,
+.hero b {
+  color: var(--text);
+}
+
+/* ── Coach: expandable paragraphs ── */
+.expandable {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expandable.is-open {
+  grid-template-rows: 1fr;
+}
+.expandable > div {
+  overflow: hidden;
+}
+
+/* ── Certificate extra items ── */
+.cert-extra {
+  display: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.cert-extra.is-visible {
+  display: list-item;
+}
+.cert-extra.is-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── More / Less toggle button ── */
+.btn-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent2);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  align-self: flex-end;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+.btn-expand:hover {
+  background: rgba(42, 109, 244, 0.12);
+  border-color: rgba(42, 109, 244, 0.4);
+  color: var(--text);
+}
+.btn-expand__icon {
+  display: inline-block;
+  line-height: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-expand.is-open .btn-expand__icon {
+  transform: rotate(180deg);
+}
+
+/* ── Coach layout: default side-by-side grid ── */
+.coach-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 28px;
+  align-items: center;
+}
+.coach-media,
+.coach-copy {
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Coach layout: stacked (desktop, certs expanded) ── */
+@media (min-width: 981px) {
+  /* Switch to a two-column grid where photo is a narrow sticky column
+     and copy spans full width — photo anchors to top */
+  .coach-layout.is-stacked {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 28px;
+  }
+  .coach-layout.is-stacked .coach-media {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 80px;
+    width: 100%;
+    animation: coachMediaSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .coach-layout.is-stacked .coach-copy {
+    grid-column: 2;
+    grid-row: 1;
+    animation: coachCopyFadeIn 0.45s 0.1s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  /* Revert animation when closing */
+  .coach-layout:not(.is-stacked) .coach-media,
+  .coach-layout:not(.is-stacked) .coach-copy {
+    animation: none;
+  }
+}
+
+@keyframes coachMediaSlideIn {
+  from {
+    opacity: 0.4;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes coachCopyFadeIn {
+  from {
+    opacity: 0.4;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Coach "Contact me" button — centred on desktop ── */
+@media (min-width: 981px) {
+  .coach-copy > .btn {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+/* ── Coach layout: always single-column on mobile ── */
+@media (max-width: 980px) {
+  .coach-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .coach-copy > .btn {
+    display: block;
+    text-align: center;
+  }
+
+  /* Center buttons in results and method sections */
+  #method .banner .btn {
+    display: block;
+    text-align: center;
+    align-self: center;
+  }
+  #method .banner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 /* Pricing */
@@ -1151,26 +1403,13 @@ textarea {
   background: rgba(0, 0, 0, 0.14);
 }
 .footer__inner {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr;
-  gap: 16px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 .footer__inner > *:last-child {
-  text-align: right;
-}
-.footer__links {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.footer__links a {
-  color: var(--muted);
-}
-.footer__links a:hover {
-  color: var(--text);
+  text-align: center;
 }
 
 /* Responsive */
@@ -1178,6 +1417,23 @@ textarea {
   .section {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer__inner > *:last-child {
+    text-align: left;
+  }
+  #results .section__head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #results .section__head .btn {
+    display: block;
+    text-align: center;
+    width: 100%;
   }
   .hero__grid {
     grid-template-columns: 1fr;
@@ -1190,6 +1446,7 @@ textarea {
   .split {
     grid-template-columns: 1fr;
   }
+
   .split__media {
     width: 100%;
   }
@@ -1421,6 +1678,18 @@ textarea {
   color: #8fa8d0;
   margin: 0;
   line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quiz-summary-check {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%232a6df4'/%3E%3Cpolyline points='4,8.5 6.5,11 12,5.5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: cover;
 }
 .quiz-message-textarea:focus {
   border-color: rgba(42, 109, 244, 0.55);

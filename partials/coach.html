@@ -1,34 +1,110 @@
 <!-- COACH -->
 <section class="section" id="coach">
-  <div class="container split">
-    <div class="split__media">
-      <img class="portrait" src="assets/coach-toned.jpg" loading="lazy" />
+  <div class="container coach-layout" id="coachLayout">
+    <div class="split__media coach-media" id="coachMedia">
+      <img class="portrait" src="assets/coach3.jpg" loading="lazy" />
     </div>
-
-    <div class="split__copy">
+    <div class="split__copy coach-copy" id="coachCopy">
       <p class="eyebrow">MEET YOUR COACH</p>
-      <h2>Hi, I'm Adam. I coach people who want results without extremes.</h2>
-      <p class="muted">
-        My approach blends strength training fundamentals, flexible nutrition, and behavior change -
-        so you don't fall off the plan the moment life gets busy.
-      </p>
 
       <div class="bullets">
+        <!-- ABOUT -->
         <div class="bullet">
-          <h3>Practical programming</h3>
-          <p>Simple structure, clear progression, minimal fluff.</p>
+          <h3>About</h3>
+          <p>
+            I'm a previous professional football player, that has been working as a personal trainer
+            since 2014 and have become the most selling PT in one of the biggest gym chain in Norway
+            and Slovakia.
+          </p>
+          <div class="expandable" id="aboutExtra">
+            <div>
+              <p class="space">
+                Throughout my career, I became the top-selling personal trainer within one of the
+                largest gym chains operating in Norway and Slovakia. My coaching experience ranges
+                from elite athletes across various sports to individuals looking to transform their
+                lifestyle, improve fitness, and maintain long-term health. I have great experience
+                with professional athletes within various sports, but also regarding regular clients
+                with need to change or keep up a healthy lifestyle.
+              </p>
+            </div>
+          </div>
+          <button class="btn-expand" data-target="aboutExtra" type="button">
+            <span class="btn-expand__text">More</span>
+          </button>
         </div>
+
+        <!-- EXPERIENCES -->
         <div class="bullet">
-          <h3>Food you actually like</h3>
-          <p>No "perfect meals" required - just repeatable basics.</p>
+          <h3>Experiences</h3>
+          <p class="space">
+            <b>Football:</b> previous professional football player, football coach and physical
+            trainer. Personal trainer for football players in Premier League, Bundesliga,
+            Eliteserien, Major Soccer League, Ekstraklasa, Slovak &amp; Czech first league.
+          </p>
+          <div class="expandable is-open" id="expExtra">
+            <div>
+              <p class="space">
+                <b>Other sports:</b> personal trainer for professional MMA fighters, tennis players,
+                handball players, and basketball players. I have wide experience when it comes to
+                rehabilitation, technique training, imbalances, weight loss, lifestyle changes, and
+                hypertrophy training.
+              </p>
+            </div>
+          </div>
+          <button class="btn-expand" data-target="expExtra" type="button">
+            <span class="btn-expand__text">Less</span>
+          </button>
         </div>
-        <div class="bullet">
-          <h3>Accountability that works</h3>
-          <p>Weekly check - ins, real feedback, and fast adjustments.</p>
+
+        <!-- CERTIFICATES -->
+        <div class="bullet" id="certBullet">
+          <h3>Certificates</h3>
+          <ul class="dot-list">
+            <li>EXOS Power and Strength</li>
+            <li>Trainer Certificate – Level IV for Different Sports</li>
+            <li>Trainer Certificate – Level III Fitness Trainer</li>
+
+            <li class="cert-extra">EXOS Speed</li>
+            <li class="cert-extra">EXOS Mentorship Phase 1</li>
+            <li class="cert-extra">Triphasic Training Course</li>
+            <li class="cert-extra">DNS Sports Course Trainer Certificate I, II, III</li>
+            <li class="cert-extra">DNS (Dynamic Neuromuscular Stabilization) Course</li>
+            <li class="cert-extra">Functional Strength and Power with Kettlebell</li>
+            <li class="cert-extra">Reaching Maximum Growth &amp; Strength</li>
+            <li class="cert-extra">Hypertrophy Conference 2023</li>
+            <li class="cert-extra">Physiological Training</li>
+            <li class="cert-extra">Muscle Contractions</li>
+
+            <li class="cert-extra">Powerlifting Technique and Methodic Training</li>
+            <li class="cert-extra">Powerlifting School</li>
+            <li class="cert-extra">Squat School</li>
+
+            <li class="cert-extra">Physiotherapy for Sports Injuries</li>
+            <li class="cert-extra">Rehabilitation After Post-Op ACL Surgery</li>
+            <li class="cert-extra">Prevention and Treatment of Adductors</li>
+            <li class="cert-extra">SM System (Spiral Stabilization)</li>
+            <li class="cert-extra">Functional Patterns</li>
+
+            <li class="cert-extra">Diagnostics for Trainers</li>
+            <li class="cert-extra">Real Diagnostics of the Human Body</li>
+            <li class="cert-extra">Assessments: Fundamental Concepts and Techniques</li>
+
+            <li class="cert-extra">Modern Nutrition</li>
+
+            <li class="cert-extra">UEFA Grassroots Charter C Licence</li>
+            <li class="cert-extra">Certificate of Basic Sports Training</li>
+            <li class="cert-extra">Certificate in Kinesio Taping</li>
+            <li class="cert-extra">Pregnancy Training</li>
+            <li class="cert-extra">Post-Pregnancy Training</li>
+            <li class="cert-extra">Certified KAATSU Specialist (the only one in Norway)</li>
+          </ul>
+          <button class="btn-expand" id="certToggle" type="button">
+            <span class="btn-expand__text">More</span>
+          </button>
         </div>
       </div>
 
-      <a class="btn scroll-top-btn" href="#packages">Apply</a>
+      <a class="btn scroll-top-btn" href="#packages">Contact me</a>
     </div>
   </div>
 </section>
