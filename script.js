@@ -1,4 +1,25 @@
-// --- Mobile nav ---
+// ============================================================
+// AUTO-GENERATED FILE — DO NOT EDIT DIRECTLY
+// Changes made here will be overwritten on the next build.
+// Edit the modules in /scripts and run: node build.js/node build.js --watch
+// ============================================================
+// ── Utils ─────────────────────────────────────────────────────────────────────
+
+// Year
+document.getElementById("year").textContent = String(new Date().getFullYear());
+
+// Scroll to top
+document.querySelectorAll(".scroll-top-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    window.history.replaceState(null, "", window.location.origin);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+
+// ── Mobile nav ────────────────────────────────────────────────────────────────
+
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
 
@@ -23,10 +44,9 @@ document.addEventListener("click", e => {
   if (!within) setNav(false);
 });
 
-// --- Year ---
-document.getElementById("year").textContent = String(new Date().getFullYear());
 
-// --- Gallery modal ---
+// ── Gallery modal ─────────────────────────────────────────────────────────────
+
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
 const modalClose = document.getElementById("modalClose");
@@ -37,6 +57,7 @@ function openModal(src) {
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
+
 function closeModal() {
   modal.setAttribute("aria-hidden", "true");
   modalImg.src = "";
@@ -53,98 +74,113 @@ modal?.addEventListener("click", e => {
   const close = e.target?.dataset?.close === "true";
   if (close) closeModal();
 });
+
 modalClose?.addEventListener("click", closeModal);
+
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && modal?.getAttribute("aria-hidden") === "false") closeModal();
 });
 
-// --- Testimonial rotator ---
-const quotes = [
-  {
-    text: "“Finally a plan I can stick to without my whole day revolving around it.”",
-    meta: "— Client, 12-week block",
-  },
-  {
-    text: "“My strength went up and my back stopped feeling wrecked every morning.”",
-    meta: "— Client, hybrid home/gym",
-  },
-  {
-    text: "“No more ‘all-or-nothing’. Weekends are included and I still progress.”",
-    meta: "— Client, busy parent",
-  },
-];
 
-let qIndex = 0;
-const quoteText = document.getElementById("quoteText");
-const quoteMeta = document.getElementById("quoteMeta");
-const quotePrev = document.getElementById("quotePrev");
-const quoteNext = document.getElementById("quoteNext");
+// ── Coach section ─────────────────────────────────────────────────────────────
 
-function renderQuote() {
-  const q = quotes[qIndex];
-  quoteText.textContent = q.text;
-  quoteMeta.textContent = q.meta;
-}
-
-quotePrev?.addEventListener("click", () => {
-  qIndex = (qIndex - 1 + quotes.length) % quotes.length;
-  renderQuote();
-});
-quoteNext?.addEventListener("click", () => {
-  qIndex = (qIndex + 1) % quotes.length;
-  renderQuote();
-});
-
-// --- Contact form validation (client-side demo) ---
-const leadForm = document.getElementById("leadForm");
-const formNote = document.getElementById("formNote");
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-leadForm?.addEventListener("submit", e => {
-  e.preventDefault();
-  formNote.textContent = "";
-
-  const data = new FormData(leadForm);
-  const name = String(data.get("name") || "").trim();
-  const email = String(data.get("email") || "").trim();
-  const goal = String(data.get("goal") || "").trim();
-  const message = String(data.get("message") || "").trim();
-
-  const errors = [];
-  if (name.length < 2) errors.push("Please enter your name.");
-  if (!isValidEmail(email)) errors.push("Please enter a valid email.");
-  if (!goal) errors.push("Please choose a goal.");
-  if (message.length < 10) errors.push("Please add a short message (10+ characters).");
-
-  if (errors.length) {
-    formNote.textContent = errors[0];
-    return;
-  }
-
-  // Demo: replace with real backend (Netlify Forms, Formspree, custom API, etc.)
-  formNote.textContent =
-    "Thanks! Your message is ready to send (connect this form to your backend).";
-  leadForm.reset();
-});
-
-// Scroll top
-
-document.querySelectorAll(".scroll-top-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
-    // Clean the URL back to just the origin (removes any path/hash)
-    window.history.replaceState(null, "", window.location.origin);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+// Generic paragraph toggles (About, Experiences)
+document.querySelectorAll(".btn-expand[data-target]").forEach(function (btn) {
+  var targetId = btn.getAttribute("data-target");
+  var target = document.getElementById(targetId);
+  if (!target) return;
+  btn.addEventListener("click", function () {
+    var opening = !target.classList.contains("is-open");
+    target.classList.toggle("is-open", opening);
+    btn.classList.toggle("is-open", opening);
+    btn.querySelector(".btn-expand__text").textContent = opening ? "Less" : "More";
   });
 });
 
-// Quiz Panel
+// Certificates toggle with layout switch
+(function () {
+  var certToggle = document.getElementById("certToggle");
+  if (!certToggle) return;
+
+  var certExtras = document.querySelectorAll(".cert-extra");
+  var coachLayout = document.getElementById("coachLayout");
+  var coachSection = document.getElementById("coach");
+  var certBullet = document.getElementById("certBullet");
+  var certOpen = false;
+
+  var isDesktop = function () {
+    return window.innerWidth >= 981;
+  };
+
+  function smoothScrollTo(el, offset) {
+    var top = el.getBoundingClientRect().top + window.pageYOffset + (offset || 0);
+    window.scrollTo({ top: top, behavior: "smooth" });
+  }
+
+  function openCerts() {
+    certOpen = true;
+    certToggle.classList.add("is-open");
+    certToggle.querySelector(".btn-expand__text").textContent = "Less";
+
+    certExtras.forEach(function (li, i) {
+      li.classList.add("is-visible");
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          li.classList.add("is-animated");
+        }, 20 + i * 20);
+      });
+    });
+
+    if (isDesktop()) {
+      coachLayout.classList.add("is-stacked");
+      setTimeout(function () {
+        smoothScrollTo(certBullet, -24);
+      }, 460);
+    } else {
+      setTimeout(function () {
+        smoothScrollTo(certBullet, -16);
+      }, 200);
+    }
+  }
+
+  function closeCerts() {
+    certOpen = false;
+    certToggle.classList.remove("is-open");
+    certToggle.querySelector(".btn-expand__text").textContent = "More";
+
+    certExtras.forEach(function (li) {
+      li.classList.remove("is-animated");
+      setTimeout(function () {
+        li.classList.remove("is-visible");
+      }, 280);
+    });
+
+    if (isDesktop()) {
+      coachLayout.classList.remove("is-stacked");
+      setTimeout(function () {
+        smoothScrollTo(coachSection, -20);
+      }, 460);
+    } else {
+      setTimeout(function () {
+        smoothScrollTo(coachSection, -16);
+      }, 200);
+    }
+  }
+
+  certToggle.addEventListener("click", function () {
+    if (certOpen) {
+      closeCerts();
+    } else {
+      openCerts();
+    }
+  });
+})();
+
+
+// ── Quiz panel ────────────────────────────────────────────────────────────────
 
 const answers = {};
-const TOTAL = 6;
+const TOTAL = 5;
 const progBar = document.getElementById("quizProgress");
 const allSteps = document.querySelectorAll(".quiz-step");
 
@@ -154,8 +190,6 @@ function getStep3() {
   return "3";
 }
 
-let _prevStepNum = 1;
-
 function showStep(id, isBack = false) {
   allSteps.forEach(s => {
     s.classList.remove("is-active");
@@ -164,7 +198,6 @@ function showStep(id, isBack = false) {
   const t = document.querySelector(`.quiz-step[data-step="${id}"]`);
   if (!t) return;
 
-  // Pick animation direction
   t.style.animationName = isBack ? "qFadeBack" : "qFade";
   t.classList.add("is-active");
 
@@ -172,14 +205,13 @@ function showStep(id, isBack = false) {
   if (!isNaN(n)) progBar.style.width = (n / (TOTAL + 1)) * 100 + "%";
   else if (id === "contact" || id === "thanks") progBar.style.width = "100%";
 
-  // On contact/thanks step: stack quiz above hero__media; otherwise side-by-side
   const heroGrid = document.querySelector(".hero__grid");
   if (heroGrid) {
     heroGrid.classList.toggle("hero__grid--stacked", id === "contact" || id === "thanks");
   }
 }
 
-document.getElementById("quizSteps").addEventListener("click", function (e) {
+document.getElementById("quizSteps")?.addEventListener("click", function (e) {
   // Answers toggle
   if (e.target.closest("#answersToggle")) {
     const body = document.getElementById("answersBody");
@@ -223,7 +255,8 @@ document.getElementById("quizSteps").addEventListener("click", function (e) {
   }
 });
 
-// ── Human-readable labels for quiz answers ──────────────────────────────────
+// ── Human-readable labels ─────────────────────────────────────────────────────
+
 const ANSWER_LABELS = {
   goal: {
     athlete: "Athlete improvement",
@@ -304,13 +337,12 @@ function populateHidden() {
   document.getElementById("fMissing").value = answers.missing || "";
   document.getElementById("fCommit").value = answers.commit || "";
 
-  // Populate the read-only summary textarea
   const summary = buildSummary();
   const summaryEl = document.getElementById("qSummary");
   if (summaryEl) summaryEl.value = summary;
+
   const displayEl = document.getElementById("qSummaryDisplay");
   if (displayEl) {
-    // Build structured Q&A pairs — no extra blank lines
     const entries = Object.entries(QUESTION_LABELS)
       .filter(([key]) => answers[key])
       .map(([key, question]) => {
@@ -321,7 +353,6 @@ function populateHidden() {
     displayEl.innerHTML = entries.join("");
   }
 
-  // Combine summary + free message into full_message hidden field
   updateFullMessage();
 }
 
@@ -333,94 +364,47 @@ function updateFullMessage() {
   if (el) el.value = combined;
 }
 
-const quizForm = document.getElementById("quizForm");
-const quizStatus = document.getElementById("quizStatus");
-const quizSubmit = document.getElementById("quizSubmit");
-
-// ── Email inline validation ──
-const qEmailInput = document.getElementById("qEmail");
-const qEmailField = qEmailInput?.closest(".quiz-field");
-
-function validateEmail() {
-  const val = qEmailInput.value.trim();
-  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-  qEmailField?.classList.toggle("has-error", val.length > 0 && !valid);
-  return valid;
-}
-
-qEmailInput?.addEventListener("blur", validateEmail);
-qEmailInput?.addEventListener("input", () => {
-  if (qEmailField?.classList.contains("has-error")) validateEmail();
-});
-
-// Live update full_message when user types in free-text area
+// Live update when user types in free-text area
 document.getElementById("qMessage")?.addEventListener("input", updateFullMessage);
 
-quizForm?.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  updateFullMessage(); // ensure latest free-text is captured
-  populateHidden();
 
-  const name = document.getElementById("qName").value.trim();
-  const email = document.getElementById("qEmail").value.trim();
-  if (name.length < 2) {
-    setStatus("Vennligst skriv inn ditt navn.", true);
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    qEmailField?.classList.add("has-error");
-    qEmailInput?.focus();
-    return;
-  }
-  qEmailField?.classList.remove("has-error");
+// ── Contact form ──────────────────────────────────────────────────────────────
 
-  // Phone validation
-  const phoneInput = document.getElementById("qPhone");
-  const phoneField = phoneInput?.closest(".quiz-field");
-  const phoneVal = phoneInput?.value.trim() || "";
-  const dialCodeVal = document.getElementById("qDialCode")?.value || "+1";
-  if (phoneVal && !validatePhoneNumber(phoneVal, dialCodeVal)) {
-    if (phoneField) {
-      phoneField.classList.add("has-error");
-      let errEl = phoneField.querySelector(".quiz-field-error");
-      if (!errEl) {
-        errEl = document.createElement("p");
-        errEl.className = "quiz-field-error";
-        phoneField.appendChild(errEl);
-      }
-      errEl.textContent = "Please enter a valid phone number for the selected country.";
-    }
-    phoneInput?.focus();
-    return;
-  }
-  if (phoneField) phoneField.classList.remove("has-error");
+const leadForm = document.getElementById("leadForm");
+const formNote = document.getElementById("formNote");
 
-  quizSubmit.disabled = true;
-  quizSubmit.textContent = "Sender…";
-  setStatus("");
-
-  try {
-    const res = await fetch(quizForm.action, {
-      method: "POST",
-      body: new FormData(quizForm),
-      headers: { Accept: "application/json" },
-    });
-    if (res.ok || res.status === 302) {
-      showStep("thanks");
-    } else throw new Error(res.status);
-  } catch {
-    quizSubmit.disabled = false;
-    quizSubmit.textContent = "Kontakt meg →";
-    setStatus("Noe gikk galt. Prøv igjen eller kontakt oss direkte.", true);
-  }
-});
-
-function setStatus(msg, err = false) {
-  quizStatus.textContent = msg;
-  quizStatus.className = "quiz-status" + (err ? " is-error" : "");
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+leadForm?.addEventListener("submit", e => {
+  e.preventDefault();
+  formNote.textContent = "";
+
+  const data = new FormData(leadForm);
+  const name = String(data.get("name") || "").trim();
+  const email = String(data.get("email") || "").trim();
+  const goal = String(data.get("goal") || "").trim();
+  const message = String(data.get("message") || "").trim();
+
+  const errors = [];
+  if (name.length < 2) errors.push("Please enter your name.");
+  if (!isValidEmail(email)) errors.push("Please enter a valid email.");
+  if (!goal) errors.push("Please choose a goal.");
+  if (message.length < 10) errors.push("Please add a short message (10+ characters).");
+
+  if (errors.length) {
+    formNote.textContent = errors[0];
+    return;
+  }
+
+  // Demo: replace with real backend (Netlify Forms, Formspree, custom API, etc.)
+  formNote.textContent = "Thanks! Your message is ready to send (connect this form to your backend).";
+  leadForm.reset();
+});
+
 // ── Country dial-code picker ──────────────────────────────────────────────────
+
 const COUNTRIES = [
   { f: "🇦🇫", n: "Afghanistan", c: "+93" },
   { f: "🇦🇱", n: "Albania", c: "+355" },
@@ -617,73 +601,73 @@ const COUNTRIES = [
   { f: "🇿🇼", n: "Zimbabwe", c: "+263" },
 ];
 
-// ── Phone format validation per country ──────────────────────────────────────
-// Patterns keyed by dial code. Length = [min, max] digits after the dial code.
+// ── Phone format validation per country ───────────────────────────────────────
+
 const PHONE_PATTERNS = {
-  "+1": /^[2-9]\d{2}[2-9]\d{6}$/, // North America (NANP)
-  "+7": /^\d{10}$/, // Russia / Kazakhstan
-  "+20": /^1[0-25]\d{8}$/, // Egypt
-  "+27": /^[6-8]\d{8}$/, // South Africa
-  "+30": /^[26]\d{9}$/, // Greece
-  "+31": /^[1-9]\d{8}$/, // Netherlands
-  "+32": /^[1-9]\d{7,8}$/, // Belgium
-  "+33": /^[1-9]\d{8}$/, // France
-  "+34": /^[6-9]\d{8}$/, // Spain
-  "+36": /^[1-9]\d{7,8}$/, // Hungary
-  "+39": /^[0-9]\d{6,10}$/, // Italy
-  "+40": /^[2-8]\d{8}$/, // Romania
-  "+41": /^[1-9]\d{8}$/, // Switzerland
-  "+43": /^[1-9]\d{6,12}$/, // Austria
-  "+44": /^[1-9]\d{9}$/, // UK
-  "+45": /^[2-9]\d{7}$/, // Denmark
-  "+46": /^[1-9]\d{6,9}$/, // Sweden
-  "+47": /^[2-9]\d{7}$/, // Norway
-  "+48": /^[1-9]\d{8}$/, // Poland
-  "+49": /^[1-9]\d{6,12}$/, // Germany
-  "+51": /^[19]\d{8}$/, // Peru
-  "+52": /^[1-9]\d{9}$/, // Mexico
-  "+53": /^[5-8]\d{7}$/, // Cuba
-  "+54": /^[1-9]\d{9,10}$/, // Argentina
-  "+55": /^[1-9]{2}[2-9]\d{7,8}$/, // Brazil
-  "+56": /^[2-9]\d{8}$/, // Chile
-  "+57": /^[1-9]\d{9}$/, // Colombia
-  "+58": /^[2-4]\d{9}$/, // Venezuela
-  "+60": /^[1-9]\d{7,9}$/, // Malaysia
-  "+61": /^[2-57-8]\d{8}$/, // Australia
-  "+62": /^[2-9]\d{6,11}$/, // Indonesia
-  "+63": /^[2-9]\d{7,9}$/, // Philippines
-  "+64": /^[2-9]\d{7,9}$/, // New Zealand
-  "+65": /^[689]\d{7}$/, // Singapore
-  "+66": /^[2-9]\d{7,8}$/, // Thailand
-  "+81": /^[1-9]\d{8,9}$/, // Japan
-  "+82": /^[1-9]\d{7,9}$/, // South Korea
-  "+84": /^[1-9]\d{8,9}$/, // Vietnam
-  "+86": /^1[3-9]\d{9}$/, // China
-  "+90": /^5\d{9}$/, // Turkey
-  "+91": /^[6-9]\d{9}$/, // India
-  "+92": /^3\d{9}$/, // Pakistan
-  "+93": /^[7]\d{8}$/, // Afghanistan
-  "+94": /^[1-9]\d{8}$/, // Sri Lanka
-  "+98": /^9\d{9}$/, // Iran
-  "+212": /^[5-7]\d{8}$/, // Morocco
-  "+213": /^[5-7]\d{8}$/, // Algeria
-  "+216": /^[2-9]\d{7}$/, // Tunisia
-  "+218": /^[2-9]\d{8}$/, // Libya
-  "+220": /^[2-9]\d{6}$/, // Gambia
-  "+221": /^[3-9]\d{8}$/, // Senegal
-  "+234": /^[7-9]\d{9}$/, // Nigeria
-  "+254": /^[17]\d{8}$/, // Kenya
-  "+255": /^[67]\d{8}$/, // Tanzania
-  "+256": /^[37]\d{8}$/, // Uganda
-  "+380": /^[3-9]\d{8}$/, // Ukraine
-  "+381": /^[1-9]\d{7,8}$/, // Serbia
-  "+385": /^[1-9]\d{6,9}$/, // Croatia
-  "+386": /^[1-9]\d{7}$/, // Slovenia
-  "+420": /^[1-9]\d{8}$/, // Czech Republic
-  "+421": /^[1-9]\d{8}$/, // Slovakia
-  "+966": /^5\d{8}$/, // Saudi Arabia
-  "+971": /^5\d{8}$/, // UAE
-  "+972": /^[5-9]\d{8}$/, // Israel
+  "+1":   /^[2-9]\d{2}[2-9]\d{6}$/,
+  "+7":   /^\d{10}$/,
+  "+20":  /^1[0-25]\d{8}$/,
+  "+27":  /^[6-8]\d{8}$/,
+  "+30":  /^[26]\d{9}$/,
+  "+31":  /^[1-9]\d{8}$/,
+  "+32":  /^[1-9]\d{7,8}$/,
+  "+33":  /^[1-9]\d{8}$/,
+  "+34":  /^[6-9]\d{8}$/,
+  "+36":  /^[1-9]\d{7,8}$/,
+  "+39":  /^[0-9]\d{6,10}$/,
+  "+40":  /^[2-8]\d{8}$/,
+  "+41":  /^[1-9]\d{8}$/,
+  "+43":  /^[1-9]\d{6,12}$/,
+  "+44":  /^[1-9]\d{9}$/,
+  "+45":  /^[2-9]\d{7}$/,
+  "+46":  /^[1-9]\d{6,9}$/,
+  "+47":  /^[2-9]\d{7}$/,
+  "+48":  /^[1-9]\d{8}$/,
+  "+49":  /^[1-9]\d{6,12}$/,
+  "+51":  /^[19]\d{8}$/,
+  "+52":  /^[1-9]\d{9}$/,
+  "+53":  /^[5-8]\d{7}$/,
+  "+54":  /^[1-9]\d{9,10}$/,
+  "+55":  /^[1-9]{2}[2-9]\d{7,8}$/,
+  "+56":  /^[2-9]\d{8}$/,
+  "+57":  /^[1-9]\d{9}$/,
+  "+58":  /^[2-4]\d{9}$/,
+  "+60":  /^[1-9]\d{7,9}$/,
+  "+61":  /^[2-57-8]\d{8}$/,
+  "+62":  /^[2-9]\d{6,11}$/,
+  "+63":  /^[2-9]\d{7,9}$/,
+  "+64":  /^[2-9]\d{7,9}$/,
+  "+65":  /^[689]\d{7}$/,
+  "+66":  /^[2-9]\d{7,8}$/,
+  "+81":  /^[1-9]\d{8,9}$/,
+  "+82":  /^[1-9]\d{7,9}$/,
+  "+84":  /^[1-9]\d{8,9}$/,
+  "+86":  /^1[3-9]\d{9}$/,
+  "+90":  /^5\d{9}$/,
+  "+91":  /^[6-9]\d{9}$/,
+  "+92":  /^3\d{9}$/,
+  "+93":  /^[7]\d{8}$/,
+  "+94":  /^[1-9]\d{8}$/,
+  "+98":  /^9\d{9}$/,
+  "+212": /^[5-7]\d{8}$/,
+  "+213": /^[5-7]\d{8}$/,
+  "+216": /^[2-9]\d{7}$/,
+  "+218": /^[2-9]\d{8}$/,
+  "+220": /^[2-9]\d{6}$/,
+  "+221": /^[3-9]\d{8}$/,
+  "+234": /^[7-9]\d{9}$/,
+  "+254": /^[17]\d{8}$/,
+  "+255": /^[67]\d{8}$/,
+  "+256": /^[37]\d{8}$/,
+  "+380": /^[3-9]\d{8}$/,
+  "+381": /^[1-9]\d{7,8}$/,
+  "+385": /^[1-9]\d{6,9}$/,
+  "+386": /^[1-9]\d{7}$/,
+  "+420": /^[1-9]\d{8}$/,
+  "+421": /^[1-9]\d{8}$/,
+  "+966": /^5\d{8}$/,
+  "+971": /^5\d{8}$/,
+  "+972": /^[5-9]\d{8}$/,
 };
 
 // Default: 6–15 digits
@@ -695,14 +679,16 @@ function validatePhoneNumber(number, dialCode) {
   return /^\d{6,15}$/.test(digits);
 }
 
+// ── Dial-code picker ──────────────────────────────────────────────────────────
+
 (function initDialPicker() {
-  const trigger = document.getElementById("dialTrigger");
+  const trigger  = document.getElementById("dialTrigger");
   const dropdown = document.getElementById("dialDropdown");
-  const search = document.getElementById("dialSearch");
-  const list = document.getElementById("dialList");
-  const flagEl = document.getElementById("dialFlag");
-  const codeEl = document.getElementById("dialCode");
-  const hidden = document.getElementById("qDialCode");
+  const search   = document.getElementById("dialSearch");
+  const list     = document.getElementById("dialList");
+  const flagEl   = document.getElementById("dialFlag");
+  const codeEl   = document.getElementById("dialCode");
+  const hidden   = document.getElementById("qDialCode");
 
   if (!trigger) return;
 
@@ -714,13 +700,12 @@ function validatePhoneNumber(number, dialCode) {
       ? COUNTRIES.filter(c => c.n.toLowerCase().includes(q) || c.c.includes(q))
       : COUNTRIES;
     list.innerHTML = filtered
-      .map(
-        c =>
-          `<li role="option" data-code="${c.c}" data-flag="${c.f}" data-name="${c.n}" class="${c.c === selected.c ? "is-active" : ""}">
-        <span class="dl-flag">${c.f}</span>
-        <span class="dl-name">${c.n}</span>
-        <span class="dl-code">${c.c}</span>
-      </li>`
+      .map(c =>
+        `<li role="option" data-code="${c.c}" data-flag="${c.f}" data-name="${c.n}" class="${c.c === selected.c ? "is-active" : ""}">
+          <span class="dl-flag">${c.f}</span>
+          <span class="dl-name">${c.n}</span>
+          <span class="dl-code">${c.c}</span>
+        </li>`
       )
       .join("");
   }
@@ -731,7 +716,6 @@ function validatePhoneNumber(number, dialCode) {
     search.value = "";
     renderList();
     search.focus();
-    // scroll active into view
     const active = list.querySelector(".is-active");
     if (active) active.scrollIntoView({ block: "nearest" });
   }
@@ -762,12 +746,10 @@ function validatePhoneNumber(number, dialCode) {
     select(li.dataset.code, li.dataset.flag, li.dataset.name);
   });
 
-  // Close on outside click
   document.addEventListener("click", e => {
     if (!document.getElementById("dialPicker")?.contains(e.target)) closeDropdown();
   });
 
-  // Keyboard: Escape closes
   search.addEventListener("keydown", e => {
     if (e.key === "Escape") closeDropdown();
   });
@@ -775,103 +757,88 @@ function validatePhoneNumber(number, dialCode) {
   renderList();
 })();
 
-// ── Coach section: expand/collapse paragraphs & certificates ──────────────────
+// ── Quiz form submission ───────────────────────────────────────────────────────
 
-// Generic paragraph toggles (About, Experiences)
-document.querySelectorAll(".btn-expand[data-target]").forEach(function (btn) {
-  var targetId = btn.getAttribute("data-target");
-  var target = document.getElementById(targetId);
-  if (!target) return;
-  btn.addEventListener("click", function () {
-    var opening = !target.classList.contains("is-open");
-    target.classList.toggle("is-open", opening);
-    btn.classList.toggle("is-open", opening);
-    btn.querySelector(".btn-expand__text").textContent = opening ? "Less" : "More";
-  });
+const quizForm   = document.getElementById("quizForm");
+const quizStatus = document.getElementById("quizStatus");
+const quizSubmit = document.getElementById("quizSubmit");
+
+const qEmailInput = document.getElementById("qEmail");
+const qEmailField = qEmailInput?.closest(".quiz-field");
+
+function validateEmail() {
+  const val = qEmailInput.value.trim();
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  qEmailField?.classList.toggle("has-error", val.length > 0 && !valid);
+  return valid;
+}
+
+qEmailInput?.addEventListener("blur", validateEmail);
+qEmailInput?.addEventListener("input", () => {
+  if (qEmailField?.classList.contains("has-error")) validateEmail();
 });
 
-// Certificates toggle with layout switch
-(function () {
-  var certToggle = document.getElementById("certToggle");
-  if (!certToggle) return;
+quizForm?.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  updateFullMessage();
+  populateHidden();
 
-  var certExtras = document.querySelectorAll(".cert-extra");
-  var coachLayout = document.getElementById("coachLayout");
-  var coachSection = document.getElementById("coach");
-  var certBullet = document.getElementById("certBullet");
-  var certOpen = false;
+  const name = document.getElementById("qName").value.trim();
+  const email = document.getElementById("qEmail").value.trim();
 
-  var isDesktop = function () {
-    return window.innerWidth >= 981;
-  };
-
-  function smoothScrollTo(el, offset) {
-    var top = el.getBoundingClientRect().top + window.pageYOffset + (offset || 0);
-    window.scrollTo({ top: top, behavior: "smooth" });
+  if (name.length < 2) {
+    setStatus("Vennligst skriv inn ditt navn.", true);
+    return;
   }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    qEmailField?.classList.add("has-error");
+    qEmailInput?.focus();
+    return;
+  }
+  qEmailField?.classList.remove("has-error");
 
-  function openCerts() {
-    certOpen = true;
-    certToggle.classList.add("is-open");
-    certToggle.querySelector(".btn-expand__text").textContent = "Less";
+  const phoneInput = document.getElementById("qPhone");
+  const phoneField = phoneInput?.closest(".quiz-field");
+  const phoneVal   = phoneInput?.value.trim() || "";
+  const dialCodeVal = document.getElementById("qDialCode")?.value || "+1";
 
-    // Reveal extras with stagger
-    certExtras.forEach(function (li, i) {
-      li.classList.add("is-visible");
-      requestAnimationFrame(function () {
-        setTimeout(
-          function () {
-            li.classList.add("is-animated");
-          },
-          20 + i * 20
-        );
-      });
+  if (phoneVal && !validatePhoneNumber(phoneVal, dialCodeVal)) {
+    if (phoneField) {
+      phoneField.classList.add("has-error");
+      let errEl = phoneField.querySelector(".quiz-field-error");
+      if (!errEl) {
+        errEl = document.createElement("p");
+        errEl.className = "quiz-field-error";
+        phoneField.appendChild(errEl);
+      }
+      errEl.textContent = "Please enter a valid phone number for the selected country.";
+    }
+    phoneInput?.focus();
+    return;
+  }
+  if (phoneField) phoneField.classList.remove("has-error");
+
+  quizSubmit.disabled = true;
+  quizSubmit.textContent = "Sender…";
+  setStatus("");
+
+  try {
+    const res = await fetch(quizForm.action, {
+      method: "POST",
+      body: new FormData(quizForm),
+      headers: { Accept: "application/json" },
     });
-
-    // Desktop: switch to stacked layout then scroll to cert list
-    if (isDesktop()) {
-      coachLayout.classList.add("is-stacked");
-      setTimeout(function () {
-        smoothScrollTo(certBullet, -24);
-      }, 460);
-    } else {
-      setTimeout(function () {
-        smoothScrollTo(certBullet, -16);
-      }, 200);
-    }
+    if (res.ok || res.status === 302) {
+      showStep("thanks");
+    } else throw new Error(res.status);
+  } catch {
+    quizSubmit.disabled = false;
+    quizSubmit.textContent = "Kontakt meg →";
+    setStatus("Noe gikk galt. Prøv igjen eller kontakt oss direkte.", true);
   }
+});
 
-  function closeCerts() {
-    certOpen = false;
-    certToggle.classList.remove("is-open");
-    certToggle.querySelector(".btn-expand__text").textContent = "More";
-
-    // Hide extras
-    certExtras.forEach(function (li) {
-      li.classList.remove("is-animated");
-      setTimeout(function () {
-        li.classList.remove("is-visible");
-      }, 280);
-    });
-
-    // Desktop: revert layout then scroll back to coach section
-    if (isDesktop()) {
-      coachLayout.classList.remove("is-stacked");
-      setTimeout(function () {
-        smoothScrollTo(coachSection, -20);
-      }, 460);
-    } else {
-      setTimeout(function () {
-        smoothScrollTo(coachSection, -16);
-      }, 200);
-    }
-  }
-
-  certToggle.addEventListener("click", function () {
-    if (certOpen) {
-      closeCerts();
-    } else {
-      openCerts();
-    }
-  });
-})();
+function setStatus(msg, err = false) {
+  quizStatus.textContent = msg;
+  quizStatus.className = "quiz-status" + (err ? " is-error" : "");
+}
