@@ -178,11 +178,28 @@ function populateHidden() {
 }
 
 function updateFullMessage() {
-  const summary = document.getElementById("qSummary")?.value || "";
-  const message = document.getElementById("qMessage")?.value.trim() || "";
-  const combined = message ? summary + "\n\n---\n\nAdditional message:\n" + message : summary;
+  const lines = Object.entries(QUESTION_LABELS)
+    .filter(([key]) => answers[key])
+    .map(([key, question]) => {
+      const raw = answers[key];
+      const label = (ANSWER_LABELS[key] && ANSWER_LABELS[key][raw]) || raw;
+      return question + "\n" + label;
+    });
+
+  const additionalMsg = document.getElementById("qMessage")?.value.trim() || "";
+  if (additionalMsg) {
+    lines.push("Additional message:\n" + additionalMsg);
+  }
+
+  const combined = lines.join("\n\n");
+
+  // Write into the hidden 'message' field that Web3Forms uses as the email body
   const el = document.getElementById("fFullMessage");
   if (el) el.value = combined;
+
+  // Also keep qSummary in sync for the display
+  const summaryEl = document.getElementById("qSummary");
+  if (summaryEl) summaryEl.value = combined;
 }
 
 // Live update when user types in free-text area

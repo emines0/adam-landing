@@ -213,12 +213,9 @@
           <!-- Contact -->
           <div class="quiz-step" data-step="contact">
             <p class="quiz-contact-title">Contact Information</p>
-            <form
-              id="quizForm"
-              action="https://formkeep.com/f/YOUR_FORM_TOKEN"
-              method="POST"
-              accept-charset="UTF-8"
-            >
+            <form id="quizForm" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="e5d29712-9a06-461d-8689-d2d3aa229a0f" />
+              <input type="hidden" name="subject" id="fSubject" />
               <input type="hidden" name="goal" id="fGoal" />
               <input type="hidden" name="frequency" id="fFreq" />
               <input type="hidden" name="challenge" id="fChallenge" />
@@ -306,7 +303,7 @@
                 <div class="quiz-answers-body" id="answersBody" hidden>
                   <div id="qSummaryDisplay" class="quiz-summary-display"></div>
                 </div>
-                <input type="hidden" id="qSummary" name="quiz_summary" />
+                <input type="hidden" id="qSummary" />
               </div>
 
               <div class="quiz-field">
@@ -316,14 +313,16 @@
                 >
                 <textarea
                   id="qMessage"
-                  name="message"
+                  name="additional_notes"
                   class="quiz-message-textarea"
                   rows="3"
                   placeholder="Tell me about your schedule, goals, or anything relevant…"
                 ></textarea>
               </div>
 
-              <input type="hidden" name="full_message" id="fFullMessage" />
+              <input type="hidden" name="message" id="fFullMessage" />
+
+              <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
 
               <div class="quiz-bottom-row">
                 <button
