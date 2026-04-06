@@ -385,381 +385,490 @@ function updateFullMessage() {
 document.getElementById("qMessage")?.addEventListener("input", updateFullMessage);
 
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <!-- ═══ QUIZ PANEL ═══ -->
-      <div class="quiz-panel" id="quizPanel">
-        <div class="quiz-logo">
-          <div class="quiz-logo__top">ADAM KAVKA</div>
-          <div class="quiz-logo__bottom">COACHING</div>
-          <p class="quiz-tagline"><b>Contact me</b> by answering the following questions below.</p>
-        </div>
+// ── Contact form ──────────────────────────────────────────────────────────────
 
-        <div class="quiz-progress">
-          <div class="quiz-progress__fill" id="quizProgress" style="width: 16.66%"></div>
-        </div>
+const leadForm = document.getElementById("leadForm");
+const formNote = document.getElementById("formNote");
 
-        <div class="quiz-steps" id="quizSteps">
-          <!-- Step 1 -->
-          <div class="quiz-step is-active" data-step="1">
-            <p class="quiz-question">How can I help you reach your goal?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="goal" data-val="athlete">
-                Athlete improvement
-              </button>
-              <button class="quiz-opt" data-group="goal" data-val="muscle">Build muscles</button>
-              <button class="quiz-opt" data-group="goal" data-val="energy">
-                Get more energy and structure
-              </button>
-              <button class="quiz-opt" data-group="goal" data-val="glutes">Build glutes</button>
-              <button class="quiz-opt" data-group="goal" data-val="injury">
-                Recover from injury / Prevent injury
-              </button>
-              <button class="quiz-opt" data-group="goal" data-val="fat">Fat reduction</button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="2" disabled>Next</button>
-            </div>
-          </div>
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
-          <!-- Step 2 -->
-          <div class="quiz-step" data-step="2">
-            <p class="quiz-question">How many times per week do you realistically want to train?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="freq" data-val="2">2 times</button>
-              <button class="quiz-opt" data-group="freq" data-val="3">3 times</button>
-              <button class="quiz-opt" data-group="freq" data-val="4+">4+ times</button>
-              <button class="quiz-opt" data-group="freq" data-val="unsure">Not sure</button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="1">Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="3" disabled>Next</button>
-            </div>
-          </div>
+leadForm?.addEventListener("submit", e => {
+  e.preventDefault();
+  formNote.textContent = "";
 
-          <!-- Step 3 -->
-          <div class="quiz-step" data-step="3">
-            <p class="quiz-question">What is your biggest challenge?</p>
-            <div class="quiz-options quiz-options--3col">
-              <button class="quiz-opt" data-group="challenge" data-val="diet">
-                It's hard to stick to a diet
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="structure">
-                Lack of structure in my training
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="motivation">
-                Struggle with motivation
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="time">
-                Not enough time in my daily life
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="tried">
-                Tried a lot without results
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="coaching">
-                Need coaching
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next</button>
-            </div>
-          </div>
+  const data = new FormData(leadForm);
+  const name = String(data.get("name") || "").trim();
+  const email = String(data.get("email") || "").trim();
+  const goal = String(data.get("goal") || "").trim();
+  const message = String(data.get("message") || "").trim();
 
-          <!-- Step 3b – ATHLETE variant -->
-          <div class="quiz-step" data-step="3b">
-            <p class="quiz-question">
-              What aspect of your performance do you most want to improve?
-            </p>
-            <div class="quiz-options quiz-options--3col">
-              <button class="quiz-opt" data-group="challenge" data-val="speed">
-                Speed & explosiveness
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="strength">
-                Strength & power
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="endurance">Recovery</button>
-              <button class="quiz-opt" data-group="challenge" data-val="injury">
-                Staying injury-free
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="body-comp">
-                Body composition
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="consistency">
-                Training consistency
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next</button>
-            </div>
-          </div>
+  const errors = [];
+  if (name.length < 2) errors.push("Please enter your name.");
+  if (!isValidEmail(email)) errors.push("Please enter a valid email.");
+  if (!goal) errors.push("Please choose a goal.");
+  if (message.length < 10) errors.push("Please add a short message (10+ characters).");
 
-          <!-- Step 3c – INJURY/RECOVERY variant -->
-          <div class="quiz-step" data-step="3c">
-            <p class="quiz-question">What best describes your current situation?</p>
-            <div class="quiz-options quiz-options--3col">
-              <button class="quiz-opt" data-group="challenge" data-val="rehab">
-                Recovering from a recent injury
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="chronic">
-                Managing a chronic / recurring issue
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="prevention">
-                No injury now, want to stay that way
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="post-surgery">
-                Post-surgery rehabilitation
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="pain">
-                Pain during training I want to fix
-              </button>
-              <button class="quiz-opt" data-group="challenge" data-val="return">
-                Returning to sport after time off
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="2">Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="4" disabled>Next</button>
-            </div>
-          </div>
+  if (errors.length) {
+    formNote.textContent = errors[0];
+    return;
+  }
 
-          <!-- Step 4 -->
-          <div class="quiz-step" data-step="4">
-            <p class="quiz-question">How ready are you to start making real progress?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="ready" data-val="now">
-                I'm ready to start now
-              </button>
-              <button class="quiz-opt" data-group="ready" data-val="soon">
-                I want to start within the next few weeks
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="3">Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="5" disabled>Next</button>
-            </div>
-          </div>
+  // Demo: replace with real backend (Netlify Forms, Formspree, custom API, etc.)
+  formNote.textContent =
+    "Thanks! Your message is ready to send (connect this form to your backend).";
+  leadForm.reset();
+});
 
-          <!-- Step 5 -->
-          <div class="quiz-step" data-step="5">
-            <p class="quiz-question">What do you feel you're missing most right now?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="missing" data-val="diet-structure">
-                Nutrition structure
-              </button>
-              <button class="quiz-opt" data-group="missing" data-val="training-structure">
-                Training structure
-              </button>
-              <button class="quiz-opt" data-group="missing" data-val="accountability">
-                Accountability and check-ins
-              </button>
-              <button class="quiz-opt" data-group="missing" data-val="all">All</button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="4">Back</button>
-              <button
-                class="quiz-nav-btn quiz-nav-btn--next scroll-top-btn"
-                data-next="contact"
-                disabled
-              >
-                Next
-              </button>
-            </div>
-            <!-- <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="4">Back</button>
-              <button class="quiz-nav-btn quiz-nav-btn--next" data-next="6" disabled>Next</button>
-            </div> -->
-          </div>
+// ── Country dial-code picker ──────────────────────────────────────────────────
 
-          <!-- Step 6 -->
-          <!-- <div class="quiz-step" data-step="6">
-            <p class="quiz-question">Are you willing to follow a plan if it suits you?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-group="commit" data-val="yes">
-                Yes, I'm ready to do what it takes
-              </button>
-              <button class="quiz-opt" data-group="commit" data-val="support">
-                Yes, but I need support and guidance
-              </button>
-            </div>
-            <div class="quiz-nav">
-              <button class="quiz-nav-btn quiz-nav-btn--back" data-back="5">Back</button>
-              <button
-                class="quiz-nav-btn quiz-nav-btn--next scroll-top-btn"
-                data-next="contact"
-                disabled
-              >
-                Next
-              </button>
-            </div>
-          </div> -->
+const COUNTRIES = [
+  { f: "🇦🇫", n: "Afghanistan", c: "+93" },
+  { f: "🇦🇱", n: "Albania", c: "+355" },
+  { f: "🇩🇿", n: "Algeria", c: "+213" },
+  { f: "🇦🇩", n: "Andorra", c: "+376" },
+  { f: "🇦🇴", n: "Angola", c: "+244" },
+  { f: "🇦🇬", n: "Antigua & Barbuda", c: "+1-268" },
+  { f: "🇦🇷", n: "Argentina", c: "+54" },
+  { f: "🇦🇲", n: "Armenia", c: "+374" },
+  { f: "🇦🇺", n: "Australia", c: "+61" },
+  { f: "🇦🇹", n: "Austria", c: "+43" },
+  { f: "🇦🇿", n: "Azerbaijan", c: "+994" },
+  { f: "🇧🇸", n: "Bahamas", c: "+1-242" },
+  { f: "🇧🇭", n: "Bahrain", c: "+973" },
+  { f: "🇧🇩", n: "Bangladesh", c: "+880" },
+  { f: "🇧🇧", n: "Barbados", c: "+1-246" },
+  { f: "🇧🇾", n: "Belarus", c: "+375" },
+  { f: "🇧🇪", n: "Belgium", c: "+32" },
+  { f: "🇧🇿", n: "Belize", c: "+501" },
+  { f: "🇧🇯", n: "Benin", c: "+229" },
+  { f: "🇧🇹", n: "Bhutan", c: "+975" },
+  { f: "🇧🇴", n: "Bolivia", c: "+591" },
+  { f: "🇧🇦", n: "Bosnia & Herzegovina", c: "+387" },
+  { f: "🇧🇼", n: "Botswana", c: "+267" },
+  { f: "🇧🇷", n: "Brazil", c: "+55" },
+  { f: "🇧🇳", n: "Brunei", c: "+673" },
+  { f: "🇧🇬", n: "Bulgaria", c: "+359" },
+  { f: "🇧🇫", n: "Burkina Faso", c: "+226" },
+  { f: "🇧🇮", n: "Burundi", c: "+257" },
+  { f: "🇰🇭", n: "Cambodia", c: "+855" },
+  { f: "🇨🇲", n: "Cameroon", c: "+237" },
+  { f: "🇨🇦", n: "Canada", c: "+1" },
+  { f: "🇨🇻", n: "Cape Verde", c: "+238" },
+  { f: "🇨🇫", n: "Central African Rep.", c: "+236" },
+  { f: "🇹🇩", n: "Chad", c: "+235" },
+  { f: "🇨🇱", n: "Chile", c: "+56" },
+  { f: "🇨🇳", n: "China", c: "+86" },
+  { f: "🇨🇴", n: "Colombia", c: "+57" },
+  { f: "🇰🇲", n: "Comoros", c: "+269" },
+  { f: "🇨🇬", n: "Congo", c: "+242" },
+  { f: "🇨🇩", n: "Congo (DRC)", c: "+243" },
+  { f: "🇨🇷", n: "Costa Rica", c: "+506" },
+  { f: "🇭🇷", n: "Croatia", c: "+385" },
+  { f: "🇨🇺", n: "Cuba", c: "+53" },
+  { f: "🇨🇾", n: "Cyprus", c: "+357" },
+  { f: "🇨🇿", n: "Czech Republic", c: "+420" },
+  { f: "🇩🇰", n: "Denmark", c: "+45" },
+  { f: "🇩🇯", n: "Djibouti", c: "+253" },
+  { f: "🇩🇲", n: "Dominica", c: "+1-767" },
+  { f: "🇩🇴", n: "Dominican Republic", c: "+1-809" },
+  { f: "🇪🇨", n: "Ecuador", c: "+593" },
+  { f: "🇪🇬", n: "Egypt", c: "+20" },
+  { f: "🇸🇻", n: "El Salvador", c: "+503" },
+  { f: "🇬🇶", n: "Equatorial Guinea", c: "+240" },
+  { f: "🇪🇷", n: "Eritrea", c: "+291" },
+  { f: "🇪🇪", n: "Estonia", c: "+372" },
+  { f: "🇸🇿", n: "Eswatini", c: "+268" },
+  { f: "🇪🇹", n: "Ethiopia", c: "+251" },
+  { f: "🇫🇯", n: "Fiji", c: "+679" },
+  { f: "🇫🇮", n: "Finland", c: "+358" },
+  { f: "🇫🇷", n: "France", c: "+33" },
+  { f: "🇬🇦", n: "Gabon", c: "+241" },
+  { f: "🇬🇲", n: "Gambia", c: "+220" },
+  { f: "🇬🇪", n: "Georgia", c: "+995" },
+  { f: "🇩🇪", n: "Germany", c: "+49" },
+  { f: "🇬🇭", n: "Ghana", c: "+233" },
+  { f: "🇬🇷", n: "Greece", c: "+30" },
+  { f: "🇬🇩", n: "Grenada", c: "+1-473" },
+  { f: "🇬🇹", n: "Guatemala", c: "+502" },
+  { f: "🇬🇳", n: "Guinea", c: "+224" },
+  { f: "🇬🇼", n: "Guinea-Bissau", c: "+245" },
+  { f: "🇬🇾", n: "Guyana", c: "+592" },
+  { f: "🇭🇹", n: "Haiti", c: "+509" },
+  { f: "🇭🇳", n: "Honduras", c: "+504" },
+  { f: "🇭🇺", n: "Hungary", c: "+36" },
+  { f: "🇮🇸", n: "Iceland", c: "+354" },
+  { f: "🇮🇳", n: "India", c: "+91" },
+  { f: "🇮🇩", n: "Indonesia", c: "+62" },
+  { f: "🇮🇷", n: "Iran", c: "+98" },
+  { f: "🇮🇶", n: "Iraq", c: "+964" },
+  { f: "🇮🇪", n: "Ireland", c: "+353" },
+  { f: "🇮🇱", n: "Israel", c: "+972" },
+  { f: "🇮🇹", n: "Italy", c: "+39" },
+  { f: "🇯🇲", n: "Jamaica", c: "+1-876" },
+  { f: "🇯🇵", n: "Japan", c: "+81" },
+  { f: "🇯🇴", n: "Jordan", c: "+962" },
+  { f: "🇰🇿", n: "Kazakhstan", c: "+7" },
+  { f: "🇰🇪", n: "Kenya", c: "+254" },
+  { f: "🇰🇮", n: "Kiribati", c: "+686" },
+  { f: "🇽🇰", n: "Kosovo", c: "+383" },
+  { f: "🇰🇼", n: "Kuwait", c: "+965" },
+  { f: "🇰🇬", n: "Kyrgyzstan", c: "+996" },
+  { f: "🇱🇦", n: "Laos", c: "+856" },
+  { f: "🇱🇻", n: "Latvia", c: "+371" },
+  { f: "🇱🇧", n: "Lebanon", c: "+961" },
+  { f: "🇱🇸", n: "Lesotho", c: "+266" },
+  { f: "🇱🇷", n: "Liberia", c: "+231" },
+  { f: "🇱🇾", n: "Libya", c: "+218" },
+  { f: "🇱🇮", n: "Liechtenstein", c: "+423" },
+  { f: "🇱🇹", n: "Lithuania", c: "+370" },
+  { f: "🇱🇺", n: "Luxembourg", c: "+352" },
+  { f: "🇲🇬", n: "Madagascar", c: "+261" },
+  { f: "🇲🇼", n: "Malawi", c: "+265" },
+  { f: "🇲🇾", n: "Malaysia", c: "+60" },
+  { f: "🇲🇻", n: "Maldives", c: "+960" },
+  { f: "🇲🇱", n: "Mali", c: "+223" },
+  { f: "🇲🇹", n: "Malta", c: "+356" },
+  { f: "🇲🇭", n: "Marshall Islands", c: "+692" },
+  { f: "🇲🇷", n: "Mauritania", c: "+222" },
+  { f: "🇲🇺", n: "Mauritius", c: "+230" },
+  { f: "🇲🇽", n: "Mexico", c: "+52" },
+  { f: "🇫🇲", n: "Micronesia", c: "+691" },
+  { f: "🇲🇩", n: "Moldova", c: "+373" },
+  { f: "🇲🇨", n: "Monaco", c: "+377" },
+  { f: "🇲🇳", n: "Mongolia", c: "+976" },
+  { f: "🇲🇪", n: "Montenegro", c: "+382" },
+  { f: "🇲🇦", n: "Morocco", c: "+212" },
+  { f: "🇲🇿", n: "Mozambique", c: "+258" },
+  { f: "🇲🇲", n: "Myanmar", c: "+95" },
+  { f: "🇳🇦", n: "Namibia", c: "+264" },
+  { f: "🇳🇷", n: "Nauru", c: "+674" },
+  { f: "🇳🇵", n: "Nepal", c: "+977" },
+  { f: "🇳🇱", n: "Netherlands", c: "+31" },
+  { f: "🇳🇿", n: "New Zealand", c: "+64" },
+  { f: "🇳🇮", n: "Nicaragua", c: "+505" },
+  { f: "🇳🇪", n: "Niger", c: "+227" },
+  { f: "🇳🇬", n: "Nigeria", c: "+234" },
+  { f: "🇲🇰", n: "North Macedonia", c: "+389" },
+  { f: "🇳🇴", n: "Norway", c: "+47" },
+  { f: "🇴🇲", n: "Oman", c: "+968" },
+  { f: "🇵🇰", n: "Pakistan", c: "+92" },
+  { f: "🇵🇼", n: "Palau", c: "+680" },
+  { f: "🇵🇦", n: "Panama", c: "+507" },
+  { f: "🇵🇬", n: "Papua New Guinea", c: "+675" },
+  { f: "🇵🇾", n: "Paraguay", c: "+595" },
+  { f: "🇵🇪", n: "Peru", c: "+51" },
+  { f: "🇵🇭", n: "Philippines", c: "+63" },
+  { f: "🇵🇱", n: "Poland", c: "+48" },
+  { f: "🇵🇹", n: "Portugal", c: "+351" },
+  { f: "🇶🇦", n: "Qatar", c: "+974" },
+  { f: "🇷🇴", n: "Romania", c: "+40" },
+  { f: "🇷🇺", n: "Russia", c: "+7" },
+  { f: "🇷🇼", n: "Rwanda", c: "+250" },
+  { f: "🇰🇳", n: "Saint Kitts & Nevis", c: "+1-869" },
+  { f: "🇱🇨", n: "Saint Lucia", c: "+1-758" },
+  { f: "🇻🇨", n: "Saint Vincent", c: "+1-784" },
+  { f: "🇼🇸", n: "Samoa", c: "+685" },
+  { f: "🇸🇲", n: "San Marino", c: "+378" },
+  { f: "🇸🇹", n: "São Tomé & Príncipe", c: "+239" },
+  { f: "🇸🇦", n: "Saudi Arabia", c: "+966" },
+  { f: "🇸🇳", n: "Senegal", c: "+221" },
+  { f: "🇷🇸", n: "Serbia", c: "+381" },
+  { f: "🇸🇨", n: "Seychelles", c: "+248" },
+  { f: "🇸🇱", n: "Sierra Leone", c: "+232" },
+  { f: "🇸🇬", n: "Singapore", c: "+65" },
+  { f: "🇸🇰", n: "Slovakia", c: "+421" },
+  { f: "🇸🇮", n: "Slovenia", c: "+386" },
+  { f: "🇸🇧", n: "Solomon Islands", c: "+677" },
+  { f: "🇸🇴", n: "Somalia", c: "+252" },
+  { f: "🇿🇦", n: "South Africa", c: "+27" },
+  { f: "🇸🇸", n: "South Sudan", c: "+211" },
+  { f: "🇪🇸", n: "Spain", c: "+34" },
+  { f: "🇱🇰", n: "Sri Lanka", c: "+94" },
+  { f: "🇸🇩", n: "Sudan", c: "+249" },
+  { f: "🇸🇷", n: "Suriname", c: "+597" },
+  { f: "🇸🇪", n: "Sweden", c: "+46" },
+  { f: "🇨🇭", n: "Switzerland", c: "+41" },
+  { f: "🇸🇾", n: "Syria", c: "+963" },
+  { f: "🇹🇼", n: "Taiwan", c: "+886" },
+  { f: "🇹🇯", n: "Tajikistan", c: "+992" },
+  { f: "🇹🇿", n: "Tanzania", c: "+255" },
+  { f: "🇹🇭", n: "Thailand", c: "+66" },
+  { f: "🇹🇱", n: "Timor-Leste", c: "+670" },
+  { f: "🇹🇬", n: "Togo", c: "+228" },
+  { f: "🇹🇴", n: "Tonga", c: "+676" },
+  { f: "🇹🇹", n: "Trinidad & Tobago", c: "+1-868" },
+  { f: "🇹🇳", n: "Tunisia", c: "+216" },
+  { f: "🇹🇷", n: "Turkey", c: "+90" },
+  { f: "🇹🇲", n: "Turkmenistan", c: "+993" },
+  { f: "🇹🇻", n: "Tuvalu", c: "+688" },
+  { f: "🇺🇬", n: "Uganda", c: "+256" },
+  { f: "🇺🇦", n: "Ukraine", c: "+380" },
+  { f: "🇦🇪", n: "United Arab Emirates", c: "+971" },
+  { f: "🇬🇧", n: "United Kingdom", c: "+44" },
+  { f: "🇺🇸", n: "United States", c: "+1" },
+  { f: "🇺🇾", n: "Uruguay", c: "+598" },
+  { f: "🇺🇿", n: "Uzbekistan", c: "+998" },
+  { f: "🇻🇺", n: "Vanuatu", c: "+678" },
+  { f: "🇻🇦", n: "Vatican City", c: "+379" },
+  { f: "🇻🇪", n: "Venezuela", c: "+58" },
+  { f: "🇻🇳", n: "Vietnam", c: "+84" },
+  { f: "🇾🇪", n: "Yemen", c: "+967" },
+  { f: "🇿🇲", n: "Zambia", c: "+260" },
+  { f: "🇿🇼", n: "Zimbabwe", c: "+263" },
+];
 
-          <!-- Contact -->
-          <div class="quiz-step" data-step="contact">
-            <p class="quiz-contact-title">Contact Information</p>
-            <form id="quizForm" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="e5d29712-9a06-461d-8689-d2d3aa229a0f" />
-              <input type="hidden" name="subject" id="fSubject" />
-              <input type="hidden" name="goal" id="fGoal" />
-              <input type="hidden" name="frequency" id="fFreq" />
-              <input type="hidden" name="challenge" id="fChallenge" />
-              <input type="hidden" name="readiness" id="fReady" />
-              <input type="hidden" name="missing" id="fMissing" />
-              <input type="hidden" name="commitment" id="fCommit" />
+// ── Phone format validation per country ───────────────────────────────────────
 
-              <div class="quiz-field">
-                <label for="qName">Full name</label>
-                <input
-                  type="text"
-                  id="qName"
-                  name="name"
-                  placeholder="Your full name"
-                  required
-                  autocomplete="name"
-                />
-              </div>
-              <div class="quiz-field">
-                <label for="qEmail">Email</label>
-                <input
-                  type="email"
-                  id="qEmail"
-                  name="email"
-                  placeholder="Your email"
-                  required
-                  autocomplete="email"
-                />
-                <p class="quiz-field-error" id="qEmailError">Please enter a valid email address.</p>
-              </div>
-              <div class="quiz-field">
-                <label for="qPhone">Phone</label>
-                <div class="quiz-phone-row">
-                  <div class="dial-picker" id="dialPicker">
-                    <button
-                      type="button"
-                      class="dial-trigger"
-                      id="dialTrigger"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                    >
-                      <span class="dial-flag" id="dialFlag">🇳🇴</span>
-                      <span class="dial-code" id="dialCode">+47</span>
-                      <span class="dial-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div
-                      class="dial-dropdown"
-                      id="dialDropdown"
-                      role="listbox"
-                      aria-label="Select country code"
-                      hidden
-                    >
-                      <div class="dial-search-wrap">
-                        <input
-                          type="text"
-                          class="dial-search"
-                          id="dialSearch"
-                          placeholder="Search country…"
-                          autocomplete="off"
-                          aria-label="Search countries"
-                        />
-                      </div>
-                      <ul class="dial-list" id="dialList"></ul>
-                    </div>
-                  </div>
-                  <input type="hidden" name="dial_code" id="qDialCode" value="+47" />
-                  <input
-                    type="tel"
-                    id="qPhone"
-                    name="phone"
-                    placeholder="Mobile number"
-                    autocomplete="tel"
-                  />
-                </div>
-              </div>
+const PHONE_PATTERNS = {
+  "+1": /^[2-9]\d{2}[2-9]\d{6}$/,
+  "+7": /^\d{10}$/,
+  "+20": /^1[0-25]\d{8}$/,
+  "+27": /^[6-8]\d{8}$/,
+  "+30": /^[26]\d{9}$/,
+  "+31": /^[1-9]\d{8}$/,
+  "+32": /^[1-9]\d{7,8}$/,
+  "+33": /^[1-9]\d{8}$/,
+  "+34": /^[6-9]\d{8}$/,
+  "+36": /^[1-9]\d{7,8}$/,
+  "+39": /^[0-9]\d{6,10}$/,
+  "+40": /^[2-8]\d{8}$/,
+  "+41": /^[1-9]\d{8}$/,
+  "+43": /^[1-9]\d{6,12}$/,
+  "+44": /^[1-9]\d{9}$/,
+  "+45": /^[2-9]\d{7}$/,
+  "+46": /^[1-9]\d{6,9}$/,
+  "+47": /^[2-9]\d{7}$/,
+  "+48": /^[1-9]\d{8}$/,
+  "+49": /^[1-9]\d{6,12}$/,
+  "+51": /^[19]\d{8}$/,
+  "+52": /^[1-9]\d{9}$/,
+  "+53": /^[5-8]\d{7}$/,
+  "+54": /^[1-9]\d{9,10}$/,
+  "+55": /^[1-9]{2}[2-9]\d{7,8}$/,
+  "+56": /^[2-9]\d{8}$/,
+  "+57": /^[1-9]\d{9}$/,
+  "+58": /^[2-4]\d{9}$/,
+  "+60": /^[1-9]\d{7,9}$/,
+  "+61": /^[2-57-8]\d{8}$/,
+  "+62": /^[2-9]\d{6,11}$/,
+  "+63": /^[2-9]\d{7,9}$/,
+  "+64": /^[2-9]\d{7,9}$/,
+  "+65": /^[689]\d{7}$/,
+  "+66": /^[2-9]\d{7,8}$/,
+  "+81": /^[1-9]\d{8,9}$/,
+  "+82": /^[1-9]\d{7,9}$/,
+  "+84": /^[1-9]\d{8,9}$/,
+  "+86": /^1[3-9]\d{9}$/,
+  "+90": /^5\d{9}$/,
+  "+91": /^[6-9]\d{9}$/,
+  "+92": /^3\d{9}$/,
+  "+93": /^[7]\d{8}$/,
+  "+94": /^[1-9]\d{8}$/,
+  "+98": /^9\d{9}$/,
+  "+212": /^[5-7]\d{8}$/,
+  "+213": /^[5-7]\d{8}$/,
+  "+216": /^[2-9]\d{7}$/,
+  "+218": /^[2-9]\d{8}$/,
+  "+220": /^[2-9]\d{6}$/,
+  "+221": /^[3-9]\d{8}$/,
+  "+234": /^[7-9]\d{9}$/,
+  "+254": /^[17]\d{8}$/,
+  "+255": /^[67]\d{8}$/,
+  "+256": /^[37]\d{8}$/,
+  "+380": /^[3-9]\d{8}$/,
+  "+381": /^[1-9]\d{7,8}$/,
+  "+385": /^[1-9]\d{6,9}$/,
+  "+386": /^[1-9]\d{7}$/,
+  "+420": /^[1-9]\d{8}$/,
+  "+421": /^[1-9]\d{8}$/,
+  "+966": /^5\d{8}$/,
+  "+971": /^5\d{8}$/,
+  "+972": /^[5-9]\d{8}$/,
+};
 
-              <!-- Your answers toggle -->
-              <div class="quiz-field">
-                <div class="quiz-answers-header">
-                  <label>Your answers</label>
-                  <button type="button" class="quiz-answers-toggle" id="answersToggle">
-                    Show my answers
-                  </button>
-                </div>
-                <div class="quiz-answers-body" id="answersBody" hidden>
-                  <div id="qSummaryDisplay" class="quiz-summary-display"></div>
-                </div>
-                <input type="hidden" id="qSummary" />
-              </div>
+// Default: 6–15 digits
+function validatePhoneNumber(number, dialCode) {
+  const digits = number.replace(/[\s\-().]/g, "");
+  if (!digits) return true; // optional field — blank is ok
+  const pattern = PHONE_PATTERNS[dialCode];
+  if (pattern) return pattern.test(digits);
+  return /^\d{6,15}$/.test(digits);
+}
 
-              <div class="quiz-field">
-                <label for="qMessage"
-                  >Anything else you'd like to add?
-                  <span class="quiz-label-optional">(optional)</span></label
-                >
-                <textarea
-                  id="qMessage"
-                  name="additional_notes"
-                  class="quiz-message-textarea"
-                  rows="3"
-                  placeholder="Tell me about your schedule, goals, or anything relevant…"
-                ></textarea>
-              </div>
+// ── Dial-code picker ──────────────────────────────────────────────────────────
 
-              <input type="hidden" name="message" id="fFullMessage" />
+(function initDialPicker() {
+  const trigger = document.getElementById("dialTrigger");
+  const dropdown = document.getElementById("dialDropdown");
+  const search = document.getElementById("dialSearch");
+  const list = document.getElementById("dialList");
+  const flagEl = document.getElementById("dialFlag");
+  const codeEl = document.getElementById("dialCode");
+  const hidden = document.getElementById("qDialCode");
 
-              <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+  if (!trigger) return;
 
-              <div class="quiz-bottom-row">
-                <button
-                  type="button"
-                  class="quiz-nav-btn quiz-nav-btn--back scroll-top-btn"
-                  data-back="5"
-                >
-                  Back
-                </button>
-                <button type="submit" class="quiz-submit-btn" id="quizSubmit">Contact me</button>
-              </div>
-              <p class="quiz-privacy">
-                When you submit the form, we use your contact information to send you special
-                offers. Read our <a href="/privacy">privacy policy</a> for more information.
-              </p>
-              <p class="quiz-status" id="quizStatus"></p>
-            </form>
-          </div>
+  let selected = COUNTRIES.find(c => c.c === "+47") || COUNTRIES[0];
 
-          <!-- Thanks -->
-          <div class="quiz-step" data-step="thanks">
-            <div class="quiz-thanks">
-              <div class="quiz-thanks__icon">✓</div>
-              <h2>Thank you! We'll be in touch soon.</h2>
-              <p>
-                We've received your information and will get back to you as soon as possible.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- /quiz-steps -->
-      </div>
-      <!-- /quiz-panel -->
-    </div>
-    <div class="hero__media">
-      <img
-        class="hero__image"
-        src="assets/coach-hero-toned.jpg"
-        alt="Abstract placeholder graphic (replace with coach photo)"
-        loading="eager"
-      />
-      <div class="hero__card">
-        <h3>What you get</h3>
-        <ul class="checklist">
-          <li>Personalized training plan</li>
-          <li>Nutrition targets + meals framework</li>
-          <li>Weekly check-ins + adjustments</li>
-          <li>In-app chat + form review</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+  function renderList(filter = "") {
+    const q = filter.toLowerCase();
+    const filtered = q
+      ? COUNTRIES.filter(c => c.n.toLowerCase().includes(q) || c.c.includes(q))
+      : COUNTRIES;
+    list.innerHTML = filtered
+      .map(
+        c =>
+          `<li role="option" data-code="${c.c}" data-flag="${c.f}" data-name="${c.n}" class="${c.c === selected.c ? "is-active" : ""}">
+          <span class="dl-flag">${c.f}</span>
+          <span class="dl-name">${c.n}</span>
+          <span class="dl-code">${c.c}</span>
+        </li>`
+      )
+      .join("");
+  }
+
+  function openDropdown() {
+    dropdown.hidden = false;
+    trigger.setAttribute("aria-expanded", "true");
+    search.value = "";
+    renderList();
+    search.focus();
+    const active = list.querySelector(".is-active");
+    if (active) active.scrollIntoView({ block: "nearest" });
+  }
+
+  function closeDropdown() {
+    dropdown.hidden = true;
+    trigger.setAttribute("aria-expanded", "false");
+  }
+
+  function select(code, flag, name) {
+    selected = { c: code, f: flag, n: name };
+    flagEl.textContent = flag;
+    codeEl.textContent = code;
+    hidden.value = code;
+    closeDropdown();
+  }
+
+  trigger.addEventListener("click", e => {
+    e.stopPropagation();
+    dropdown.hidden ? openDropdown() : closeDropdown();
+  });
+
+  search.addEventListener("input", () => renderList(search.value));
+
+  list.addEventListener("click", e => {
+    const li = e.target.closest("li[data-code]");
+    if (!li) return;
+    select(li.dataset.code, li.dataset.flag, li.dataset.name);
+  });
+
+  document.addEventListener("click", e => {
+    if (!document.getElementById("dialPicker")?.contains(e.target)) closeDropdown();
+  });
+
+  search.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeDropdown();
+  });
+
+  renderList();
+})();
+
+// ── Quiz form submission ───────────────────────────────────────────────────────
+
+const quizForm = document.getElementById("quizForm");
+const quizStatus = document.getElementById("quizStatus");
+const quizSubmit = document.getElementById("quizSubmit");
+
+const qEmailInput = document.getElementById("qEmail");
+const qEmailField = qEmailInput?.closest(".quiz-field");
+
+function validateEmail() {
+  const val = qEmailInput.value.trim();
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  qEmailField?.classList.toggle("has-error", val.length > 0 && !valid);
+  return valid;
+}
+
+qEmailInput?.addEventListener("blur", validateEmail);
+qEmailInput?.addEventListener("input", () => {
+  if (qEmailField?.classList.contains("has-error")) validateEmail();
+});
+
+quizForm?.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  updateFullMessage();
+  populateHidden();
+
+  const name = document.getElementById("qName").value.trim();
+  const email = document.getElementById("qEmail").value.trim();
+
+  // Set email subject immediately
+  const subjectEl = document.getElementById("fSubject");
+  if (subjectEl) subjectEl.value = name + " - kavkacoaching.com";
+
+  if (name.length < 2) {
+    setStatus("Vennligst skriv inn ditt navn.", true);
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    qEmailField?.classList.add("has-error");
+    qEmailInput?.focus();
+    return;
+  }
+  qEmailField?.classList.remove("has-error");
+
+  const phoneInput = document.getElementById("qPhone");
+  const phoneField = phoneInput?.closest(".quiz-field");
+  const phoneVal = phoneInput?.value.trim() || "";
+  const dialCodeVal = document.getElementById("qDialCode")?.value || "+1";
+
+  if (phoneVal && !validatePhoneNumber(phoneVal, dialCodeVal)) {
+    if (phoneField) {
+      phoneField.classList.add("has-error");
+      let errEl = phoneField.querySelector(".quiz-field-error");
+      if (!errEl) {
+        errEl = document.createElement("p");
+        errEl.className = "quiz-field-error";
+        phoneField.appendChild(errEl);
+      }
+      errEl.textContent = "Please enter a valid phone number for the selected country.";
+    }
+    phoneInput?.focus();
+    return;
+  }
+  if (phoneField) phoneField.classList.remove("has-error");
+
+  // hCaptcha validation
+  const hCaptchaResponse = quizForm.querySelector("textarea[name=h-captcha-response]");
+  if (!hCaptchaResponse || !hCaptchaResponse.value) {
+    setStatus("Please complete the captcha.", true);
+    return;
+  }
+
+  quizSubmit.disabled = true;
+  quizSubmit.textContent = "Sender…";
+  setStatus("");
+
+  try {
+    const res = await fetch(quizForm.action, {
+      method: "POST",
+      body: new FormData(quizForm),
+      headers: { Accept: "application/json" },
+    });
+    if (res.ok || res.status === 302) {
+      showStep("thanks");
+    } else throw new Error(res.status);
+  } catch {
+    quizSubmit.disabled = false;
+    quizSubmit.textContent = "Kontakt meg →";
+    setStatus("Noe gikk galt. Prøv igjen eller kontakt oss direkte.", true);
+  }
+});
+
+function setStatus(msg, err = false) {
+  quizStatus.textContent = msg;
+  quizStatus.className = "quiz-status" + (err ? " is-error" : "");
+}
