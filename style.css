@@ -806,53 +806,135 @@ h1 {
   color: var(--muted);
 }
 
-/* Gallery */
-
-.grid {
+/* ── Gallery ── */
+#gallery.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
+
 .tile {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
+  position: relative;
   overflow: hidden;
-  cursor: pointer;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
   padding: 0;
+  cursor: pointer;
+  aspect-ratio: 4 / 5; /* uniform portrait tiles */
 }
+
 .tile img {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
+  object-position: center 25%; /* favors faces/upper body */
+  display: block;
   transition: transform 0.25s ease;
 }
+
 .tile:hover img {
   transform: scale(1.03);
 }
 
-.quote {
-  margin-top: 22px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+/* ── Tile name overlay ── */
+.tile__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 38px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 16, 32, 0) 0%,
+    rgba(11, 16, 32, 0.55) 45%,
+    rgba(11, 16, 32, 0.88) 100%
+  );
+  color: var(--text);
+  text-align: left;
+  pointer-events: none;
+  transform: translateY(0);
+  transition: transform 0.25s ease;
+}
+.tile:hover .tile__caption {
+  transform: translateY(-2px);
+}
+.tile__name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.tile__sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* ── Gallery scroll: shows 2 rows, scrolls for more ── */
+.gallery-scroll {
+  position: relative;
+  /* height = 2 tile rows + 1 gap. Tiles are 4:5 of column width.
+     With ~360px columns on desktop, 2 rows ≈ 920px. Use a generous max. */
+  max-height: 940px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 6px;
   border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  flex-wrap: wrap;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(151, 196, 255, 0.35) transparent;
 }
-.quote__text {
-  margin: 0;
-  font-weight: 650;
+.gallery-scroll::-webkit-scrollbar {
+  width: 8px;
 }
-.quote__meta {
-  margin: 0;
+.gallery-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
-.quote__controls {
-  display: flex;
-  gap: 10px;
+.gallery-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(151, 196, 255, 0.4), rgba(42, 109, 244, 0.55));
+  border-radius: 999px;
+}
+.gallery-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(151, 196, 255, 0.6), rgba(42, 109, 244, 0.75));
+}
+
+/* Fade hint at bottom — only visible when content overflows */
+.gallery-scroll::after {
+  content: "";
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 56px;
+  margin-top: -56px;
+  background: linear-gradient(180deg, transparent, rgba(11, 16, 32, 0.85));
+  pointer-events: none;
+  border-radius: 0 0 18px 18px;
+}
+
+/* Responsive grid */
+@media (max-width: 980px) {
+  #gallery.grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-scroll {
+    max-height: 880px;
+  }
+}
+@media (max-width: 640px) {
+  #gallery.grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-scroll {
+    max-height: 700px;
+  }
 }
 
 /* Cards */
@@ -1237,6 +1319,52 @@ h1 {
   border: 1px solid rgba(151, 196, 255, 0.35);
   background: rgba(11, 16, 32, 0.55);
   color: var(--accent2);
+}
+
+/* ── Price rate chip ── */
+.price__rate {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(42, 109, 244, 0.1), rgba(151, 196, 255, 0.04));
+  border: 1px solid rgba(151, 196, 255, 0.18);
+}
+.price__rate-amount {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.price__rate-suffix {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.price__rate-eur {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent2);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(42, 109, 244, 0.14);
+  border: 1px solid rgba(42, 109, 244, 0.28);
+  letter-spacing: 0.01em;
+}
+
+/* Featured card: stronger tint */
+.price--featured .price__rate {
+  background: linear-gradient(135deg, rgba(42, 109, 244, 0.22), rgba(151, 196, 255, 0.06));
+  border-color: rgba(42, 109, 244, 0.35);
+}
+.price--featured .price__rate-eur {
+  background: rgba(42, 109, 244, 0.22);
+  border-color: rgba(42, 109, 244, 0.4);
 }
 
 /* Checklist */
