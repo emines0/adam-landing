@@ -927,7 +927,15 @@ h1 {
   .gallery-scroll {
     max-height: 880px;
   }
+  .section {
+    padding: 40px 20px;
+  }
+
+  .section__head--spaced {
+    margin-top: 48px;
+  }
 }
+
 @media (max-width: 640px) {
   .gallery {
     grid-template-columns: 1fr;
