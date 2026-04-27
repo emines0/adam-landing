@@ -8,12 +8,47 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>AK Coaching — Online Fitness & Lifestyle Coaching</title>
+
+    <!-- Primary meta -->
+    <title>Kavka Coaching — Online Fitness, Strength & Performance Coaching</title>
     <meta
       name="description"
-      content="Online coaching built around real life: training, nutrition, and accountability with a sustainable plan."
+      content="Personal online coaching with Adam Kavka — former pro footballer and top-selling PT in Norway and Slovakia. Custom training, nutrition, and weekly accountability for athletes and lifestyle clients."
     />
+    <meta name="author" content="Adam Kavka" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kavkacoaching.com/" />
 
+    <!-- Favicon / device icons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0b1020" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp, iMessage previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kavkacoaching.com/" />
+    <meta property="og:site_name" content="Kavka Coaching" />
+    <meta property="og:title" content="Kavka Coaching — Online Fitness & Performance Coaching" />
+    <meta
+      property="og:description"
+      content="Personal online coaching with Adam Kavka — former pro footballer and top-selling PT. Custom training, nutrition, and weekly accountability."
+    />
+    <meta property="og:image" content="https://kavkacoaching.com/assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Adam Kavka — online fitness and performance coach" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kavka Coaching — Online Fitness & Performance Coaching" />
+    <meta
+      name="twitter:description"
+      content="Personal online coaching with Adam Kavka — former pro footballer and top-selling PT."
+    />
+    <meta name="twitter:image" content="https://kavkacoaching.com/assets/og-image.jpg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,16 +57,111 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Structured data: Person + LocalBusiness + Service + FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://kavkacoaching.com/#adam",
+            "name": "Adam Kavka",
+            "jobTitle": "Personal Trainer & Performance Coach",
+            "url": "https://kavkacoaching.com/",
+            "image": "https://kavkacoaching.com/assets/coach-adam-medicineball.png",
+            "sameAs": ["https://instagram.com/adam.kavka"],
+            "description": "Former professional football player and top-selling personal trainer in Norway and Slovakia. Coaches elite athletes across football, MMA, tennis, handball and basketball, plus lifestyle clients focused on body composition, rehabilitation, and long-term health."
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://kavkacoaching.com/#business",
+            "name": "Kavka Coaching",
+            "url": "https://kavkacoaching.com/",
+            "image": "https://kavkacoaching.com/assets/coach-adam-medicineball.png",
+            "priceRange": "2190–3199 NOK / month",
+            "founder": { "@id": "https://kavkacoaching.com/#adam" },
+            "sameAs": ["https://instagram.com/adam.kavka"]
+          },
+          {
+            "@type": "Service",
+            "name": "Online Personal Coaching",
+            "provider": { "@id": "https://kavkacoaching.com/#business" },
+            "areaServed": "Worldwide",
+            "serviceType": [
+              "Personal Training",
+              "Online Coaching",
+              "Sports Performance",
+              "Injury Rehabilitation",
+              "Nutrition Coaching"
+            ],
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Starter — 3 months",
+                "price": "3199",
+                "priceCurrency": "NOK",
+                "url": "https://kavkacoaching.com/#packages"
+              },
+              {
+                "@type": "Offer",
+                "name": "Pro — 6 months",
+                "price": "2590",
+                "priceCurrency": "NOK",
+                "url": "https://kavkacoaching.com/#packages"
+              },
+              {
+                "@type": "Offer",
+                "name": "Pro Plus — 12 months",
+                "price": "2190",
+                "priceCurrency": "NOK",
+                "url": "https://kavkacoaching.com/#packages"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Do I need a full gym?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The plan is written around your equipment (home, gym, or hybrid). If you have dumbbells and a bench, that's enough to progress."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you do meal plans?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We use targets and templates with optional examples. The focus is sustainability, flexibility, and learning what works for you."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How fast will I see results?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most clients notice energy, consistency, and strength improvements in 2–3 weeks. Visible changes typically follow over 6–12+ weeks depending on goal and adherence."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
 
-  <body>
+  <body></body>
+</html>
 
 <!-- Top bar -->
 <header class="topbar" id="top">
   <div class="container topbar__inner">
-    <a class="brand scroll-top-btn" href="" aria-label="AK Coaching home">
+    <a class="brand scroll-top-btn" href="" aria-label="Kavka Coaching home">
       <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__text">AK Coaching</span>
+      <span class="brand__text">Kavka Coaching</span>
     </a>
 
     <nav class="nav" aria-label="Primary">
@@ -48,6 +178,7 @@
         <a
           class="social-link social-link--icon"
           href="https://instagram.com/adam.kavka"
+          target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
         >
@@ -453,7 +584,12 @@
 <section class="section" id="coach">
   <div class="container coach-layout" id="coachLayout">
     <div class="split__media coach-media" id="coachMedia">
-      <img class="portrait" src="assets/coach-adam-medicineball.png" loading="lazy" />
+      <img
+        class="portrait"
+        src="assets/coach-adam-medicineball.png"
+        alt="Adam Kavka, personal trainer and former professional footballer, training with a medicine ball"
+        loading="lazy"
+      />
     </div>
     <div class="split__copy coach-copy" id="coachCopy">
       <p class="eyebrow">MEET YOUR COACH</p>
@@ -990,7 +1126,7 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <p class="muted">© <span id="year"></span> <b>AK Coaching.</b> All rights reserved.</p>
+    <p class="muted">© <span id="year"></span> <b>Kavka Coaching.</b> All rights reserved.</p>
     <div class="footer__social">
         <a
           class="social-link"
