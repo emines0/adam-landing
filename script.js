@@ -50,7 +50,6 @@ document.addEventListener("click", e => {
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
 const modalClose = document.getElementById("modalClose");
-const gallery = document.getElementById("gallery");
 
 function openModal(src) {
   modalImg.src = src;
@@ -64,8 +63,9 @@ function closeModal() {
   document.body.style.overflow = "";
 }
 
-gallery?.addEventListener("click", e => {
-  const btn = e.target.closest("button[data-full]");
+// Document-level delegation so any number of `.gallery` blocks on the page work.
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".gallery button[data-full]");
   if (!btn) return;
   openModal(btn.getAttribute("data-full"));
 });
