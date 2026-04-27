@@ -110,16 +110,16 @@ They are auto-generated. A header comment at the top of each warns about this. A
 
 Find the right partial in `/partials/`, edit, save. Watch mode will rebuild instantly; otherwise run `node build.js`.
 
-| Section on the page | File to edit |
-| --- | --- |
-| Page title, meta, structured data | `partials/head.html` |
-| Top nav links / logo | `partials/header.html` |
-| Hero + quiz + contact form | `partials/hero.html` |
-| Coach bio / certificates | `partials/coach.html` |
-| Client gallery tiles | `partials/clients.html` |
-| 3-step method | `partials/how-it-works.html` |
-| Pricing & FAQ | `partials/packages.html` |
-| Footer | `partials/footer.html` |
+| Section on the page               | File to edit                 |
+| --------------------------------- | ---------------------------- |
+| Page title, meta, structured data | `partials/head.html`         |
+| Top nav links / logo              | `partials/header.html`       |
+| Hero + quiz + contact form        | `partials/hero.html`         |
+| Coach bio / certificates          | `partials/coach.html`        |
+| Client gallery tiles              | `partials/clients.html`      |
+| 3-step method                     | `partials/how-it-works.html` |
+| Pricing & FAQ                     | `partials/packages.html`     |
+| Footer                            | `partials/footer.html`       |
 
 ### Add a client to the gallery
 
@@ -220,3 +220,72 @@ node build.js
 # Local preview
 npx serve .
 ```
+
+# Favicon setup — kavkacoaching.com
+
+## Files
+
+Drop everything from the `favicons/` folder into your **site root** (same level as `index.html`). After build, they should be served from:
+
+```
+/favicon.ico
+/favicon.svg
+/favicon-16x16.png
+/favicon-32x32.png
+/favicon-48x48.png
+/favicon-180x180.png
+/favicon-192x192.png
+/favicon-512x512.png
+/apple-touch-icon.png
+/site.webmanifest
+```
+
+Verify your `build.js` copies these to the output directory, or place them in whatever folder your build treats as static assets.
+
+---
+
+## HTML — paste into `<head>`
+
+Add this block to the `<head>` of `partials/hero.html` (or wherever your shared `<head>` partial lives):
+
+```html
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0b1020" />
+```
+
+The `theme-color` matches your site's navy so mobile browser chrome blends in.
+
+---
+
+## site.webmanifest
+
+Create this file at the site root:
+
+```json
+{
+  "name": "Kavka Coaching",
+  "short_name": "Kavka",
+  "icons": [
+    { "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#0b1020",
+  "background_color": "#0b1020",
+  "display": "standalone"
+}
+```
+
+(Update `name` / `short_name` if you'd prefer a different label when users add the site to their home screen.)
+
+---
+
+## After deploying
+
+1. Hard-refresh the tab (browsers cache favicons aggressively — `Cmd/Ctrl + Shift + R`).
+2. If the old icon sticks around, also try opening `/favicon.ico` directly in a tab and refreshing it.
