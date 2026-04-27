@@ -1957,3 +1957,69 @@ textarea {
   opacity: 1;
   margin-top: 8px;
 }
+
+/* ── Social link (Instagram, etc.) ── */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.12s;
+}
+.social-link:hover {
+  background: rgba(42, 109, 244, 0.14);
+  border-color: rgba(42, 109, 244, 0.4);
+  transform: translateY(-1px);
+}
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+/* Icon-only variant (for topbar) */
+.social-link--icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 12px;
+}
+
+/* Coach: row of social links sits next to "Contact me" */
+.coach-social-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.coach-social-row .btn {
+  flex: 1;
+  min-width: 200px;
+}
+
+@media (min-width: 981px) {
+  .coach-copy > .coach-social-row .btn {
+    width: auto;
+  }
+}
+
+/* Footer: social link sits next to copyright */
+.footer__inner {
+  flex-wrap: wrap;
+}
+.footer__social {
+  display: flex;
+  gap: 10px;
+}
