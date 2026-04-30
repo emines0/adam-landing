@@ -45,7 +45,7 @@ const PARTIALS = [
  * utils first (shared helpers), then feature modules,
  * quiz before form (form submission calls quiz helpers).
  */
-const SCRIPTS = ["utils.js", "nav.js", "modal.js", "coach.js", "quiz.js", "form.js"];
+const SCRIPTS = ["utils.js", "nav.js", "modal.js", "coach.js", "quiz.js", "form.js", "gallery.js"];
 
 // ─── Build HTML ──────────────────────────────────────────────────────────────
 
